@@ -1,0 +1,18 @@
+@import "CSS_Variables.css";
+
+.main-container {
+    display: flex;
+}
+
+.main-left-pane {
+    background-color: blue;
+    height: 100vh;
+    width: var(--left-pane-sizing);
+
+}
+
+.main-right-pane {
+    background-color: red;
+    height: 100vh;
+    width: calc(100vw - var(--left-pane-sizing));
+}
