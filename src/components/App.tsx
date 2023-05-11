@@ -1,4 +1,5 @@
-import './App.css'
+import '../stylesheets/App.css';
+import Map from './Map.tsx';
 
 function App() {
 
@@ -8,10 +9,11 @@ function App() {
                 <p>hello</p>
             </div>
             <div className={"main-right-pane"}>
+                <Map/>
 
             </div>
         </div>
     )
 }
 
-export default App
+export default App;

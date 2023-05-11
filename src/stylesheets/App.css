@@ -1,4 +1,4 @@
-@import "CSS_Variables.css";
+@import "../stylesheets/CSS_Variables.css";
 
 .main-container {
     display: flex;
@@ -8,7 +8,6 @@
     background-color: blue;
     height: 100vh;
     width: var(--left-pane-sizing);
-
 }
 
 .main-right-pane {
