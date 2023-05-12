@@ -1,6 +1,5 @@
-// import {setActiveLayer, setActiveLayerHook} from "../map_logic/map_logic.ts";
-import {setters, hookSetters} from "../map_logic/map_logic.ts";
 import {useState} from "react";
+import {hookSetters, setters} from "../logic/hooks.ts";
 
 function ActiveLayer() {
 

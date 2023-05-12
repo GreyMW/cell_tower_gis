@@ -1,6 +1,6 @@
 import "../stylesheets/MainMenu.css";
 import ActiveLayer from "./ActiveLayer.tsx";
-// import mapState from "../map_logic/map_logic.ts";
+// import mapState from "../logic/logic.ts";
 function MainMenu(){
 
 

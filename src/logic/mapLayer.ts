@@ -5,10 +5,12 @@ class MapLayer {
     private layerName: string;
     private markers: MapMarkers[];
     private towers: MapTowers[];
+    private visibility: boolean;
     constructor(name: string) {
         this.layerName = name;
         this.markers = [];
         this.towers = [];
+        this.visibility = true;
     }
 
     //setters and adders
@@ -27,6 +29,10 @@ class MapLayer {
         this.layerName = name;
     }
 
+    public setVisibility(visible: boolean) {
+        this.visibility = visible;
+    }
+
     //getters
     public getMarkers() {
         return this.markers;
@@ -38,6 +44,10 @@ class MapLayer {
 
     public getLayerName() {
         return this.layerName;
+    }
+
+    public getVisibility() {
+        return this.visibility;
     }
 }
 
