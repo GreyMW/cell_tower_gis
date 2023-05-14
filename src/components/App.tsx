@@ -9,10 +9,8 @@ function App() {
             <div className={"main-left-pane"}>
                 <MainMenu/>
             </div>
-            <div className={"main-right-pane"}>
-                <Map/>
+            <Map/>
 
-            </div>
         </div>
     )
 }

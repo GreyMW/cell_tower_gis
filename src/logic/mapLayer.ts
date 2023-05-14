@@ -1,5 +1,5 @@
 import MapTowers from "./mapTowers.ts";
-import MapMarkers from "./mapMarkers.ts";
+import MapMarkers from "./mapMarker.ts";
 
 class MapLayer {
     private layerName: string;

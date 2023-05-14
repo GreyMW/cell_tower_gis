@@ -1,4 +1,4 @@
-class MapMarkers {
+class MapMarker {
     latitude: number;
     longitude: number;
     constructor(latitude: number, longitude: number) {
@@ -7,4 +7,4 @@ class MapMarkers {
     }
 }
 
-export default MapMarkers;
+export default MapMarker;
