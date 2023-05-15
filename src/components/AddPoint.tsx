@@ -1,11 +1,12 @@
-import {addPoint} from "../logic/map_logic.ts";
+import {actions} from "../logic/hooks.ts";
 
 
 function AddPoint(){
 
     return (
         <div>
-            <button onClick={() => addPoint}>Add Point</button>
+            <button onClick={() => actions.addPoint()}>Add Point</button>
+            <button onClick={() => console.log("omg")}>Add Point</button>
         </div>
     )
 }

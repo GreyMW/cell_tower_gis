@@ -1,7 +1,7 @@
 import {addPoint, setActiveLayer} from "./map_logic.ts";
 
-type voidFunctionNoParam = () => void;
-type voidFunctionOneParamAny = (_: any) => void;
+type voidFunctionNoParam = (() => void) | undefined;
+type voidFunctionOneParamAny = ((_: any) => void) | undefined;
 
 
 
@@ -19,7 +19,8 @@ const hookSetters: HookSetters = {
 
 //all the hooks for the program
 interface Hooks {
-    activeLayerHook: voidFunctionOneParamAny | undefined,
+    activeLayerHook: voidFunctionOneParamAny,
+    // activeLayerHook: voidFunctionOneParamAny | undefined,
     markersHook: voidFunctionOneParamAny | undefined,
 }
 
@@ -39,11 +40,11 @@ function setMarkersHook(hook: any) {
 
 
 //functions that use the hooks
-interface Setters {
+interface Actions {
     setActiveLayer: voidFunctionNoParam,
     addPoint: voidFunctionNoParam
 }
-const setters: Setters = {
+const actions: Actions = {
     setActiveLayer: setActiveLayer,
     addPoint: addPoint,
 }
@@ -53,4 +54,4 @@ const setters: Setters = {
 
 
 
-export {hookSetters, setters, hooks};
+export {hookSetters, actions, hooks};

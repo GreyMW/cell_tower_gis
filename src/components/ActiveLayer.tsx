@@ -1,5 +1,5 @@
 import {useState} from "react";
-import {hookSetters, setters} from "../logic/hooks.ts";
+import {hookSetters, actions} from "../logic/hooks.ts";
 
 function ActiveLayer() {
 
@@ -9,8 +9,8 @@ function ActiveLayer() {
     return(
         <div className={'active-layer-container main-menu-subcontainer'}>
             <p>Active Layer: {activeLayerDisplay}</p>
-            <button onClick={() => setters.setActiveLayer()}>Increment</button>
-            <button onClick={() => setters.setActiveLayer()}>Add a Layer</button>
+            <button onClick={() => actions.setActiveLayer()}>Increment</button>
+            <button onClick={() => actions.setActiveLayer()}>Add a Layer</button>
 
         </div>
     )

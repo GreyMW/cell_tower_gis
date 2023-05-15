@@ -18,23 +18,22 @@ function Map() {
 
 
     // let [activeLayer, setActivelayer] = useState();
-    function createMarker(marker: MapMarker){
+    function createMarker(marker: MapMarker, index: number){
         return (
-            <Marker position={[marker.latitude, marker.longitude]}/>
+            <Marker position={[marker.latitude, marker.longitude]} key={index}/>
         )
     }
 
 
     return (
-        <MapContainer center={[51.505, -0.09]} zoom={13} scrollWheelZoom={true}>
+        <MapContainer center={[49.9, -97.12794943349087]} zoom={13} scrollWheelZoom={true}>
             <TileLayer
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
             <LayerGroup />
 
-            {/*<Marker position={[51.505,-0.09]}/>*/}
-            {markers.map((marker) => createMarker(marker))}
+            {markers.map((marker, index) => createMarker(marker, index))}
 
             {/*<Marker position={[51.505, -0.09]}>*/}
             {/*    <Popup>*/}
