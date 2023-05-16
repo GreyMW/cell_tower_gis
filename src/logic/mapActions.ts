@@ -2,6 +2,7 @@ import mapState from "./mapState.ts";
 import MapMarkers from "./mapMarker.ts";
 import {hooks} from "./hooks.ts";
 
+type voidFunctionNoParam = (() => void) | undefined;
 
 
 //Usages for our setters and therefore the general functionality of the program
@@ -19,5 +20,13 @@ function addPoint() {
     hooks.markersHook(newPoints);
 }
 
+interface Actions {
+    setActiveLayer: voidFunctionNoParam,
+    addPoint: voidFunctionNoParam
+}
+const actions: Actions = {
+    setActiveLayer: setActiveLayer,
+    addPoint: addPoint,
+}
 
-export {setActiveLayer, addPoint};
+export {setActiveLayer, addPoint, actions};

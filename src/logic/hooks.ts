@@ -1,7 +1,7 @@
-import {addPoint, setActiveLayer} from "./map_logic.ts";
+import {addPoint, setActiveLayer} from "./mapActions.ts";
 
-type voidFunctionNoParam = (() => void) | undefined;
-type voidFunctionOneParamAny = ((_: any) => void) | undefined;
+// type voidFunctionNoParam = (() => void);
+type voidFunctionOneParamAny = ((_: any) => void);
 
 
 
@@ -20,13 +20,16 @@ const hookSetters: HookSetters = {
 //all the hooks for the program
 interface Hooks {
     activeLayerHook: voidFunctionOneParamAny,
-    // activeLayerHook: voidFunctionOneParamAny | undefined,
-    markersHook: voidFunctionOneParamAny | undefined,
+    markersHook: voidFunctionOneParamAny,
 }
 
+
 const hooks: Hooks = {
-    activeLayerHook: undefined,
-    markersHook: undefined,
+    /* eslint-disable @typescript-eslint/no-unused-vars */
+    //these are placeholder functions to stop typescript from yelling at me
+    activeLayerHook: function(_: any) {console.log("Function failed to be instantiated for activeLayerHook.")},
+    markersHook: function(_: any) {console.log("Function failed to be instantiated for markersHook.")},
+    /* eslint-enable @typescript-eslint/no-unused-vars */
 }
 
 //function calls for assigning all of our setters in our HookSetters
@@ -40,14 +43,7 @@ function setMarkersHook(hook: any) {
 
 
 //functions that use the hooks
-interface Actions {
-    setActiveLayer: voidFunctionNoParam,
-    addPoint: voidFunctionNoParam
-}
-const actions: Actions = {
-    setActiveLayer: setActiveLayer,
-    addPoint: addPoint,
-}
+
 
 
 

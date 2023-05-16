@@ -1,4 +1,4 @@
-import {actions} from "../logic/hooks.ts";
+import {actions} from "../logic/mapActions.ts";
 
 
 function AddPoint(){
