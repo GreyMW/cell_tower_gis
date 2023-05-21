@@ -1,20 +1,31 @@
 import MapTowers from "./mapTowers.ts";
-import MapMarkers from "./mapMarker.ts";
+import MapMarker from "./mapMarker.ts";
 
 class MapLayer {
     private layerName: string;
-    private markers: MapMarkers[];
+    private markers: MapMarker[];
     private towers: MapTowers[];
     private visibility: boolean;
-    constructor(name: string) {
+    // constructor(name = "Default") {
+    //     this.layerName = name;
+    //     this.markers = [];
+    //     this.towers = [];
+    //     this.visibility = true;
+    // }
+
+    constructor(name = "Default") {
         this.layerName = name;
-        this.markers = [];
+        this.markers = [new MapMarker(49.89827468722066, -97.15387030160991),
+            new MapMarker(49.88948316588984, -97.10228605743923),
+            new MapMarker(49.90518513611043, -97.11970968733384)];
         this.towers = [];
         this.visibility = true;
     }
 
+
+
     //setters and adders
-    public addMarker(marker: MapMarkers) {
+    public addMarker(marker: MapMarker) {
         //TODO: add validation
         this.markers.push(marker);
     }
