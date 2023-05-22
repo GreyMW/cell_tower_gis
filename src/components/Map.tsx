@@ -23,7 +23,7 @@ function Map({mapState}:{mapState: MapState}) {
     }
 
     return (
-        <MapContainer center={mapState.startingPosition} zoom={13} scrollWheelZoom={true}>
+        <MapContainer center={mapState.startingPosition} zoom={mapState.zoomLevel} scrollWheelZoom={true}>
             <TileLayer
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

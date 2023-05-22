@@ -1,12 +1,10 @@
-import {useState} from "react";
 
 function ActiveLayer() {
 
-    const [activeLayerDisplay, setActiveLayerDisplay] = useState(0);
 
     return(
         <div className={'active-layer-container main-menu-subcontainer'}>
-            <p>Active Layer: {activeLayerDisplay}</p>
+            <p>Active Layer: TODO</p>
             <button onClick={() => console.log("todo")}>Increment</button>
             <button onClick={() => console.log("todo")}>Add a Layer</button>
 

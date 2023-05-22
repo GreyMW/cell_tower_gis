@@ -1,6 +1,6 @@
 import '../stylesheets/App.css';
 import Map from './Map.tsx';
-import MainMenu from "./MainMenu.tsx";
+import MenuSelector from "./MenuSelector.tsx";
 import {useEffect, useState} from "react";
 import {LatLngTuple} from "leaflet";
 import MapState from "../logic/mapState.ts";
@@ -9,13 +9,24 @@ import snapToLocation from "../logic/snapToLocation.ts";
 
 function App() {
 
-
+    const [currentMenu, setCurrentMenu] = useState<string>("main");
+    const [currentLayer, setCurrentLayer] = useState<string>("default");
+    const [zoomLevel, setZoomLevel] = useState<number>(13);
     const [snapToPosition, setSnapToPosition] = useState<LatLngTuple | null>(null);
     const [snapToLocations, setSnapToLocations] = useState<snapToLocation[]>([]);
 
     const mapState: MapState = {
-        startingPosition: [49.89296679044865, -97.13893576170027],
-        zoomLevel: 13,
+
+        currentMenu: currentMenu,
+        setCurrentMenu: setCurrentMenu,
+
+        currentLayer: currentLayer,
+        setCurrentLayer: setCurrentLayer,
+
+        startingPosition: [49.892, -97.138],
+
+        zoomLevel: zoomLevel,
+        setZoomLevel: setZoomLevel,
 
         snapToPosition: snapToPosition,
         setSnapToPosition: setSnapToPosition,
@@ -30,15 +41,10 @@ function App() {
 
     }, [])
 
-
-    console.log(typeof setSnapToPosition);
-
-
-
     return (
         <div className={"main-container"}>
             <div className={"main-left-pane"}>
-                <MainMenu mapState={mapState}/>
+                <MenuSelector mapState={mapState}/>
             </div>
             <Map mapState={mapState}/>
 
