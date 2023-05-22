@@ -11,8 +11,10 @@ function Map({mapState}:{mapState: MapState}) {
         const map = useMap();
         const didMountRef = useRef(false);
         useEffect(() => {
-            if (didMountRef) {
+            if (didMountRef && mapState.snapToPosition != null) {
+
                 map.flyTo(mapState.snapToPosition);
+                mapState.setSnapToPosition(null);
             }
             didMountRef.current = true;
         }, [mapState.snapToPosition])
@@ -21,7 +23,7 @@ function Map({mapState}:{mapState: MapState}) {
     }
 
     return (
-        <MapContainer center={[49.9, -97.12794943349087]} zoom={13} scrollWheelZoom={true}>
+        <MapContainer center={mapState.startingPosition} zoom={13} scrollWheelZoom={true}>
             <TileLayer
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

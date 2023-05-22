@@ -1,5 +1,4 @@
-
-class SnapToLocations {
+class SnapToLocation {
     latitude: number;
     longitude: number;
     name: string;
@@ -10,4 +9,4 @@ class SnapToLocations {
     }
 }
 
-export default SnapToLocations;
+export default SnapToLocation;
