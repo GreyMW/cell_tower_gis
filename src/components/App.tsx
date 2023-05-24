@@ -5,15 +5,15 @@ import {useEffect, useState} from "react";
 import {LatLngTuple} from "leaflet";
 import MapState from "../logic/mapState.ts";
 import defaultSetup from "../logic/defaultSetup.ts";
-import snapToLocation from "../logic/snapToLocation.ts";
+import snapToLocation from "../logic/locationOfInterest.ts";
 
 function App() {
 
     const [currentMenu, setCurrentMenu] = useState<string>("main");
     const [currentLayer, setCurrentLayer] = useState<string>("default");
     const [zoomLevel, setZoomLevel] = useState<number>(13);
-    const [snapToPosition, setSnapToPosition] = useState<LatLngTuple | null>(null);
-    const [snapToLocations, setSnapToLocations] = useState<snapToLocation[]>([]);
+    const [locationOfInterest, setLocationOfInterest] = useState<LatLngTuple | null>(null);
+    const [locationsOfInterest, setLocationsOfInterest] = useState<snapToLocation[]>([]);
 
     const mapState: MapState = {
 
@@ -28,11 +28,11 @@ function App() {
         zoomLevel: zoomLevel,
         setZoomLevel: setZoomLevel,
 
-        snapToPosition: snapToPosition,
-        setSnapToPosition: setSnapToPosition,
+        locationOfInterest: locationOfInterest,
+        setLocationOfInterest: setLocationOfInterest,
 
-        snapToLocations: snapToLocations,
-        setSnapToLocations: setSnapToLocations,
+        locationsOfInterest: locationsOfInterest,
+        setLocationsOfInterest: setLocationsOfInterest,
     }
 
     //sets all of our mapState to default values

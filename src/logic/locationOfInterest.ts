@@ -1,4 +1,4 @@
-class SnapToLocation {
+class LocationOfInterest {
     latitude: number;
     longitude: number;
     name: string;
@@ -11,4 +11,4 @@ class SnapToLocation {
     }
 }
 
-export default SnapToLocation;
+export default LocationOfInterest;

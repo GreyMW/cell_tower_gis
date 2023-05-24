@@ -11,13 +11,13 @@ function Map({mapState}:{mapState: MapState}) {
         const map = useMap();
         const didMountRef = useRef(false);
         useEffect(() => {
-            if (didMountRef && mapState.snapToPosition != null) {
+            if (didMountRef && mapState.locationOfInterest != null) {
 
-                map.flyTo(mapState.snapToPosition);
-                mapState.setSnapToPosition(null);
+                map.flyTo(mapState.locationOfInterest);
+                mapState.setLocationOfInterest(null);
             }
             didMountRef.current = true;
-        }, [mapState.snapToPosition])
+        }, [mapState.locationOfInterest])
 
         return null;
     }

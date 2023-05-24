@@ -1,7 +1,7 @@
 import "../stylesheets/MainMenu.css";
 import MapState from "../logic/mapState.ts";
 import MainMenu from "./menus/MainMenu.tsx";
-import SnapToLocationMenu from "./menus/SnapToLocationMenu.tsx";
+import LocationsOfInterestMenu from "./menus/LocationsOfInterestMenu.tsx";
 import AddPointsMenu from "./menus/AddPointsMenu.tsx";
 
 function MenuSelector({mapState}: {mapState: MapState }){
@@ -10,8 +10,8 @@ function MenuSelector({mapState}: {mapState: MapState }){
         return(
             <div>
                 {mapState.currentMenu === "main" ? <MainMenu mapState={mapState}/> : null}
-                {mapState.currentMenu === "snap_to_location" ? <SnapToLocationMenu/> : null}
-                {mapState.currentMenu === "add_points" ? <AddPointsMenu/> : null}
+                {mapState.currentMenu === "snap_to_location" ? <LocationsOfInterestMenu mapState={mapState}/> : null}
+                {mapState.currentMenu === "add_points" ? <AddPointsMenu mapState={mapState}/> : null}
             </div>
         )
     }
@@ -24,4 +24,3 @@ function MenuSelector({mapState}: {mapState: MapState }){
 }
 
 export default MenuSelector;
-
