@@ -10,6 +10,9 @@ export default function MainMenu({mapState}: {mapState: MapStateInterface }) {
             <button onClick={() => mapState.setCurrentMenu(MenuList.location_of_interest)}>Go to Snap Menu</button>
             <ActiveLayer/>
             <AddPoint/>
+            <p>
+                latitude: {mapState.mapPosition?.lat.toFixed(4)}, longitude: {mapState.mapPosition?.lng.toFixed(4)}
+            </p>
         </div>
     )
 }
