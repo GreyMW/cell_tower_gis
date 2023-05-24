@@ -2,10 +2,11 @@ import {LatLngTuple} from "leaflet";
 import React from "react";
 import snapToLocation from "./locationOfInterest.ts";
 
+
 interface MapState {
 
-    currentMenu: string,
-    setCurrentMenu: React.Dispatch<React.SetStateAction<string>>,
+    currentMenu: number,
+    setCurrentMenu: React.Dispatch<React.SetStateAction<number>>,
 
     currentLayer: string,
     setCurrentLayer: React.Dispatch<React.SetStateAction<string>>,

@@ -6,10 +6,11 @@ import {LatLngTuple} from "leaflet";
 import MapState from "../logic/mapState.ts";
 import defaultSetup from "../logic/defaultSetup.ts";
 import snapToLocation from "../logic/locationOfInterest.ts";
+import MenuList from "../logic/MenuList.ts";
 
 function App() {
 
-    const [currentMenu, setCurrentMenu] = useState<string>("main");
+    const [currentMenu, setCurrentMenu] = useState<number>(MenuList.main);
     const [currentLayer, setCurrentLayer] = useState<string>("default");
     const [zoomLevel, setZoomLevel] = useState<number>(13);
     const [locationOfInterest, setLocationOfInterest] = useState<LatLngTuple | null>(null);
@@ -38,7 +39,6 @@ function App() {
     //sets all of our mapState to default values
     useEffect(()=> {
         defaultSetup(mapState);
-
     }, [])
 
     return (

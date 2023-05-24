@@ -6,7 +6,7 @@ export default function MainMenu({mapState}: {mapState: MapState }) {
     return (
         <div>
             <p>Main Menu</p>
-            <button onClick={() => mapState.setCurrentMenu("snap_to_location")}>Go to Snap Menu</button>
+            <button onClick={() => mapState.setCurrentMenu("location_of_interest")}>Go to Snap Menu</button>
             <ActiveLayer/>
             <AddPoint/>
         </div>

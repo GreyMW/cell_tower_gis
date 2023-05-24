@@ -11,9 +11,17 @@ export default function LocationsOfInterestMenu({mapState}:{mapState: MapState})
             </div>
         )
     }
+    function AddLocationOfInterest({mapState}:{mapState: MapState}) {
+        return (
+            <div>
+                <button onClick={() => mapState.setCurrentMenu("add_location_of_interest")}>Add Location of Interest</button>
+            </div>
+        )
+    }
     return (
         <div>
             <ReturnToMain mapState={mapState}/>
+            <AddLocationOfInterest mapState={mapState}/>
             {mapState.locationsOfInterest.map((loc, index) => CreateLocationButton(loc, index))}
         </div>
     )
