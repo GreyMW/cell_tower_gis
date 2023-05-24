@@ -3,7 +3,7 @@ import Map from './Map.tsx';
 import MenuSelector from "./MenuSelector.tsx";
 import {useEffect, useState} from "react";
 import {LatLngTuple} from "leaflet";
-import MapState from "../logic/mapState.ts";
+import MapStateInterface from "../logic/mapStateInterface.ts";
 import defaultSetup from "../logic/defaultSetup.ts";
 import snapToLocation from "../logic/locationOfInterest.ts";
 import MenuList from "../logic/MenuList.ts";
@@ -16,7 +16,7 @@ function App() {
     const [locationOfInterest, setLocationOfInterest] = useState<LatLngTuple | null>(null);
     const [locationsOfInterest, setLocationsOfInterest] = useState<snapToLocation[]>([]);
 
-    const mapState: MapState = {
+    const mapState: MapStateInterface = {
 
         currentMenu: currentMenu,
         setCurrentMenu: setCurrentMenu,

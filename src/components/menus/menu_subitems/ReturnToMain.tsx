@@ -1,9 +1,10 @@
-import MapState from "../../../logic/mapState.ts";
+import MapStateInterface from "../../../logic/mapStateInterface.ts";
+import MenuList from "../../../logic/MenuList.ts";
 
-export default function ReturnToMain({mapState}:{mapState: MapState}){
+export default function ReturnToMain({mapState}:{mapState: MapStateInterface}){
     return(
         <div>
-            <button onClick={() => mapState.setCurrentMenu("main")}>{"<"}- Return to Main</button>
+            <button onClick={() => mapState.setCurrentMenu(MenuList.main)}>{"<"}- Return to Main</button>
         </div>
     )
 }

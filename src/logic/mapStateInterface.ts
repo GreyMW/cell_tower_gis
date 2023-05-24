@@ -3,7 +3,7 @@ import React from "react";
 import snapToLocation from "./locationOfInterest.ts";
 
 
-interface MapState {
+interface MapStateInterface {
 
     currentMenu: number,
     setCurrentMenu: React.Dispatch<React.SetStateAction<number>>,
@@ -23,4 +23,4 @@ interface MapState {
     setLocationsOfInterest: React.Dispatch<React.SetStateAction<snapToLocation[]>>,
 }
 
-export default MapState;
+export default MapStateInterface;

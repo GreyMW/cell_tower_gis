@@ -1,12 +1,13 @@
 import ActiveLayer from "../ActiveLayer.tsx";
 import AddPoint from "../AddPoint.tsx";
-import MapState from "../../logic/mapState.ts";
+import MapStateInterface from "../../logic/mapStateInterface.ts";
+import MenuList from "../../logic/MenuList.ts";
 
-export default function MainMenu({mapState}: {mapState: MapState }) {
+export default function MainMenu({mapState}: {mapState: MapStateInterface }) {
     return (
         <div>
             <p>Main Menu</p>
-            <button onClick={() => mapState.setCurrentMenu("location_of_interest")}>Go to Snap Menu</button>
+            <button onClick={() => mapState.setCurrentMenu(MenuList.location_of_interest)}>Go to Snap Menu</button>
             <ActiveLayer/>
             <AddPoint/>
         </div>

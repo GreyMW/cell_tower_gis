@@ -1,7 +1,7 @@
-import MapState from "./mapState.ts";
+import MapStateInterface from "./mapStateInterface.ts";
 import LocationOfInterest from "./locationOfInterest.ts";
 
-function defaultSetup(mapState: MapState) {
+function defaultSetup(mapState: MapStateInterface) {
     const tempSnapToLocations = [...mapState.locationsOfInterest];
     tempSnapToLocations.push(new LocationOfInterest(49.886059224248356, -97.18761630115631, "Minto"));
     tempSnapToLocations.push(new LocationOfInterest(49.83066879797684, -97.06035324519675, "Island Lakes"));

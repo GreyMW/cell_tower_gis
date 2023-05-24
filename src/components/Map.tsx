@@ -2,10 +2,10 @@ import {MapContainer, TileLayer, useMap} from "react-leaflet";
 import "../stylesheets/Map.css";
 import "leaflet/dist/leaflet.css";
 import {useEffect, useRef} from "react";
-import MapState from "../logic/mapState.ts";
+import MapStateInterface from "../logic/mapStateInterface.ts";
 
 
-function Map({mapState}:{mapState: MapState}) {
+function Map({mapState}:{mapState: MapStateInterface}) {
 
     function SnapToPosition() {
         const map = useMap();

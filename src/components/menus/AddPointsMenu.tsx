@@ -1,6 +1,6 @@
-import MapState from "../../logic/mapState.ts";
+import MapStateInterface from "../../logic/mapStateInterface.ts";
 
-export default function AddPointsMenu({mapState}:{mapState: MapState}){
+export default function AddPointsMenu({mapState}:{mapState: MapStateInterface}){
     return(
         <div></div>
     )

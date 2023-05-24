@@ -1,8 +1,9 @@
-import MapState from "../../logic/mapState.ts";
-import ReturnToMain from "./menu_subitems/ReturnToMain.tsx";
-import LocationOfInterest from "../../logic/locationOfInterest.ts";
+import MapStateInterface from "../../../logic/mapStateInterface.ts";
+import ReturnToMain from "../menu_subitems/ReturnToMain.tsx";
+import LocationOfInterest from "../../../logic/locationOfInterest.ts";
+import MenuList from "../../../logic/MenuList.ts";
 
-export default function LocationsOfInterestMenu({mapState}:{mapState: MapState}) {
+export default function LocationsOfInterestMenu({mapState}:{mapState: MapStateInterface}) {
 
     function CreateLocationButton(snapTo: LocationOfInterest, key: number){
         return (
@@ -11,10 +12,10 @@ export default function LocationsOfInterestMenu({mapState}:{mapState: MapState})
             </div>
         )
     }
-    function AddLocationOfInterest({mapState}:{mapState: MapState}) {
+    function AddLocationOfInterest({mapState}:{mapState: MapStateInterface}) {
         return (
             <div>
-                <button onClick={() => mapState.setCurrentMenu("add_location_of_interest")}>Add Location of Interest</button>
+                <button onClick={() => mapState.setCurrentMenu(MenuList.add_location_of_interest)}>Add Location of Interest</button>
             </div>
         )
     }
