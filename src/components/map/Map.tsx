@@ -2,15 +2,12 @@ import {MapContainer, TileLayer} from "react-leaflet";
 import "../../stylesheets/Map.css";
 import "leaflet/dist/leaflet.css";
 import MapStateInterface from "../../logic/object_definitions/mapStateInterface.ts";
-import UpdateZoom from "./UpdateZoom.tsx";
-import UpdateMapCenter from "./UpdateMapCenter.tsx";
-import FlyToPosition from "./FlyToPosition.tsx";
+import UpdateZoom from "./map_functions/UpdateZoom.tsx";
+import UpdateMapCenter from "./map_functions/UpdateMapCenter.tsx";
+import GoToLocationOfInterest from "./map_functions/GoToLocationOfInterest.tsx";
 
 
 function Map({mapState}:{mapState: MapStateInterface}) {
-
-    //TODO: move this to it's own file
-
 
     return (
         <MapContainer center={mapState.startingPosition} zoom={mapState.zoomLevel} scrollWheelZoom={true}>
@@ -18,9 +15,10 @@ function Map({mapState}:{mapState: MapStateInterface}) {
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
-            <FlyToPosition mapState={mapState}/>
+            <GoToLocationOfInterest mapState={mapState}/>
             <UpdateMapCenter mapState={mapState}/>
             <UpdateZoom mapState={mapState}/>
+            {/*<ZoomTo mapState={mapState}/>*/}
             {/*{markers.map((marker, index) => createMarker(marker, index))}*/}
         </MapContainer>
 

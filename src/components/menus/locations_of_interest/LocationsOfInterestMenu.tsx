@@ -4,11 +4,18 @@ import LocationOfInterest from "../../../logic/object_definitions/locationOfInte
 import MenuList from "../../../logic/object_definitions/menuList.ts";
 
 export default function LocationsOfInterestMenu({mapState}:{mapState: MapStateInterface}) {
-
-    function CreateLocationButton(snapTo: LocationOfInterest, key: number){
+    function CreateLocationButton(location: LocationOfInterest, key: number){
         return (
             <div key={key}>
-                <button onClick={() => mapState.setLocationOfInterest([snapTo.latitude, snapTo.longitude])}>{snapTo.name}</button>
+                <button onClick={() => {
+                    // mapState.setZoomLevel(snapTo.zoom);
+                    mapState.setLocationOfInterest(location);
+                    console.log(location.zoom);
+                    console.log(mapState.zoomLevel);
+
+                    console.log(mapState.zoomLevel);
+                }}>
+                    {location.name}</button>
             </div>
         )
     }

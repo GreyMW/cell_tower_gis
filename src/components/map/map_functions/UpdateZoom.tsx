@@ -1,6 +1,6 @@
 import {useMap} from "react-leaflet";
 import {useCallback, useEffect} from "react";
-import MapStateInterface from "../../logic/object_definitions/mapStateInterface.ts";
+import MapStateInterface from "../../../logic/object_definitions/mapStateInterface.ts";
 
 export default function UpdateZoom({mapState}: {mapState: MapStateInterface }) {
     const map = useMap();

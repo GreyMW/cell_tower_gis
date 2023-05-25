@@ -1,12 +1,13 @@
 import '../stylesheets/App.css';
+
 import Map from './map/Map.tsx';
 import MenuSelector from "./MenuSelector.tsx";
 import {useEffect, useState} from "react";
-import {LatLng, LatLngTuple} from "leaflet";
+import {LatLng} from "leaflet";
 import MapStateInterface from "../logic/object_definitions/mapStateInterface.ts";
 import defaultSetup from "../logic/functionality/defaultSetup.ts";
-import snapToLocation from "../logic/object_definitions/locationOfInterest.ts";
 import MenuList from "../logic/object_definitions/menuList.ts";
+import LocationOfInterest from "../logic/object_definitions/locationOfInterest.ts";
 
 function App() {
 
@@ -16,8 +17,8 @@ function App() {
     const [zoomLevel, setZoomLevel] = useState<number>(13);
     const [mapPosition, setMapPosition] = useState<LatLng | null>(null);
 
-    const [locationOfInterest, setLocationOfInterest] = useState<LatLngTuple | null>(null);
-    const [locationsOfInterest, setLocationsOfInterest] = useState<snapToLocation[]>([]);
+    const [locationOfInterest, setLocationOfInterest] = useState<LocationOfInterest | null>(null);
+    const [locationsOfInterest, setLocationsOfInterest] = useState<LocationOfInterest[]>([]);
 
     const mapState: MapStateInterface = {
 

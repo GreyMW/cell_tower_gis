@@ -1,6 +1,6 @@
 import {LatLng, LatLngTuple} from "leaflet";
 import React from "react";
-import snapToLocation from "./locationOfInterest.ts";
+import LocationOfInterest from "./locationOfInterest.ts";
 
 
 interface MapStateInterface {
@@ -19,11 +19,11 @@ interface MapStateInterface {
     mapPosition: LatLng | null,
     setMapPosition: React.Dispatch<React.SetStateAction<LatLng | null>> ,
 
-    locationOfInterest: LatLngTuple | null,
-    setLocationOfInterest: React.Dispatch<React.SetStateAction<LatLngTuple | null>>,
+    locationOfInterest: LocationOfInterest | null,
+    setLocationOfInterest: React.Dispatch<React.SetStateAction<LocationOfInterest | null>>,
 
-    locationsOfInterest: snapToLocation[],
-    setLocationsOfInterest: React.Dispatch<React.SetStateAction<snapToLocation[]>>,
+    locationsOfInterest: LocationOfInterest[],
+    setLocationsOfInterest: React.Dispatch<React.SetStateAction<LocationOfInterest[]>>,
 }
 
 export default MapStateInterface;
