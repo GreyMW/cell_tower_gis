@@ -30,7 +30,6 @@ function Map({mapState}:{mapState: MapStateInterface}) {
         const map = useMap();
         const onMove = useCallback(() => {
             mapState.setMapPosition(map.getCenter());
-
         }, [map])
 
         useEffect(() => {
@@ -43,6 +42,22 @@ function Map({mapState}:{mapState: MapStateInterface}) {
         return null;
     }
 
+    function UpdateZoomDisplay() {
+        const map = useMap();
+        const onZoomChange = useCallback(() => {
+            mapState.setZoomLevel(map.getZoom());
+        }, [map])
+
+        useEffect(()=> {
+            map.on('zoom', onZoomChange);
+            return () => {
+                map.off('zoom', onZoomChange);
+            }
+        }, [map, onZoomChange])
+
+        return null;
+    }
+
     return (
         <MapContainer center={mapState.startingPosition} zoom={mapState.zoomLevel} scrollWheelZoom={true}>
             <TileLayer
@@ -51,6 +66,7 @@ function Map({mapState}:{mapState: MapStateInterface}) {
             />
             <FlyToPosition/>
             <UpdateMapCenter/>
+            <UpdateZoomDisplay/>
             {/*{markers.map((marker, index) => createMarker(marker, index))}*/}
         </MapContainer>
 

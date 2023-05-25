@@ -13,6 +13,9 @@ export default function MainMenu({mapState}: {mapState: MapStateInterface }) {
             <p>
                 latitude: {mapState.mapPosition?.lat.toFixed(4)}, longitude: {mapState.mapPosition?.lng.toFixed(4)}
             </p>
+            <p>
+                Zoom: {mapState.zoomLevel}
+            </p>
         </div>
     )
 }
