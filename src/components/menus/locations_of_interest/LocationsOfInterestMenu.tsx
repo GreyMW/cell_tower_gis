@@ -1,7 +1,7 @@
-import MapStateInterface from "../../../logic/mapStateInterface.ts";
+import MapStateInterface from "../../../logic/object_definitions/mapStateInterface.ts";
 import ReturnToMain from "../menu_subitems/ReturnToMain.tsx";
-import LocationOfInterest from "../../../logic/locationOfInterest.ts";
-import MenuList from "../../../logic/MenuList.ts";
+import LocationOfInterest from "../../../logic/object_definitions/locationOfInterest.ts";
+import MenuList from "../../../logic/object_definitions/menuList.ts";
 
 export default function LocationsOfInterestMenu({mapState}:{mapState: MapStateInterface}) {
 

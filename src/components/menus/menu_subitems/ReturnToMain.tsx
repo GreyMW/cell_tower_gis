@@ -1,5 +1,5 @@
-import MapStateInterface from "../../../logic/mapStateInterface.ts";
-import MenuList from "../../../logic/MenuList.ts";
+import MapStateInterface from "../../../logic/object_definitions/mapStateInterface.ts";
+import MenuList from "../../../logic/object_definitions/menuList.ts";
 
 export default function ReturnToMain({mapState}:{mapState: MapStateInterface}){
     return(

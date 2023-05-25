@@ -1,12 +1,12 @@
 import '../stylesheets/App.css';
-import Map from './Map.tsx';
+import Map from './map/Map.tsx';
 import MenuSelector from "./MenuSelector.tsx";
 import {useEffect, useState} from "react";
 import {LatLng, LatLngTuple} from "leaflet";
-import MapStateInterface from "../logic/mapStateInterface.ts";
-import defaultSetup from "../logic/defaultSetup.ts";
-import snapToLocation from "../logic/locationOfInterest.ts";
-import MenuList from "../logic/MenuList.ts";
+import MapStateInterface from "../logic/object_definitions/mapStateInterface.ts";
+import defaultSetup from "../logic/functionality/defaultSetup.ts";
+import snapToLocation from "../logic/object_definitions/locationOfInterest.ts";
+import MenuList from "../logic/object_definitions/menuList.ts";
 
 function App() {
 

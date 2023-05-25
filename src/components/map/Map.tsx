@@ -1,13 +1,15 @@
 import {MapContainer, TileLayer, useMap} from "react-leaflet";
-import "../stylesheets/Map.css";
+import "../../stylesheets/Map.css";
 import "leaflet/dist/leaflet.css";
 import {useCallback, useEffect, useRef} from "react";
-import MapStateInterface from "../logic/mapStateInterface.ts";
+import MapStateInterface from "../../logic/object_definitions/mapStateInterface.ts";
 
 
 function Map({mapState}:{mapState: MapStateInterface}) {
 
-    function SnapToPosition() {
+    //TODO: move this to it's own file
+    function FlyToPosition() {
+
         const map = useMap();
         const didMountRef = useRef(false);
         useEffect(() => {
@@ -22,6 +24,7 @@ function Map({mapState}:{mapState: MapStateInterface}) {
         return null;
     }
 
+    //TODO: move this to it's own file
     // used to update the current lat and long coords for live display
     function UpdateMapCenter() {
         const map = useMap();
@@ -46,7 +49,7 @@ function Map({mapState}:{mapState: MapStateInterface}) {
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
-            <SnapToPosition/>
+            <FlyToPosition/>
             <UpdateMapCenter/>
             {/*{markers.map((marker, index) => createMarker(marker, index))}*/}
         </MapContainer>

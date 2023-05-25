@@ -1,7 +1,7 @@
 import ActiveLayer from "../ActiveLayer.tsx";
 import AddPoint from "../AddPoint.tsx";
-import MapStateInterface from "../../logic/mapStateInterface.ts";
-import MenuList from "../../logic/MenuList.ts";
+import MapStateInterface from "../../logic/object_definitions/mapStateInterface.ts";
+import MenuList from "../../logic/object_definitions/menuList.ts";
 
 export default function MainMenu({mapState}: {mapState: MapStateInterface }) {
     return (

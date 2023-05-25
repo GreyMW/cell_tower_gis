@@ -6,12 +6,6 @@ class MapLayer {
     private markers: MapMarker[];
     private towers: MapTowers[];
     private visibility: boolean;
-    // constructor(name = "Default") {
-    //     this.layerName = name;
-    //     this.markers = [];
-    //     this.towers = [];
-    //     this.visibility = true;
-    // }
 
     constructor(name = "Default") {
         this.layerName = name;

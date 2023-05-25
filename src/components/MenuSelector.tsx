@@ -1,9 +1,9 @@
 import "../stylesheets/MainMenu.css";
-import MapStateInterface from "../logic/mapStateInterface.ts";
+import MapStateInterface from "../logic/object_definitions/mapStateInterface.ts";
 import MainMenu from "./menus/MainMenu.tsx";
 import LocationsOfInterestMenu from "./menus/locations_of_interest/LocationsOfInterestMenu.tsx";
 import AddPointsMenu from "./menus/AddPointsMenu.tsx";
-import MenuList from "../logic/MenuList.ts";
+import MenuList from "../logic/object_definitions/menuList.ts";
 import AddLocationOfInterestMenu from "./menus/locations_of_interest/AddLocationOfInterestMenu.tsx";
 function MenuSelector({mapState}: {mapState: MapStateInterface }){
 

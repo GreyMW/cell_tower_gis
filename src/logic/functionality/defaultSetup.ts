@@ -1,5 +1,5 @@
-import MapStateInterface from "./mapStateInterface.ts";
-import LocationOfInterest from "./locationOfInterest.ts";
+import MapStateInterface from "../object_definitions/mapStateInterface.ts";
+import LocationOfInterest from "../object_definitions/locationOfInterest.ts";
 import {LatLng} from "leaflet";
 
 function defaultSetup(mapState: MapStateInterface) {
