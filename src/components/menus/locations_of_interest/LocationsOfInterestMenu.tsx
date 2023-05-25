@@ -8,12 +8,7 @@ export default function LocationsOfInterestMenu({mapState}:{mapState: MapStateIn
         return (
             <div key={key}>
                 <button onClick={() => {
-                    // mapState.setZoomLevel(snapTo.zoom);
                     mapState.setLocationOfInterest(location);
-                    console.log(location.zoom);
-                    console.log(mapState.zoomLevel);
-
-                    console.log(mapState.zoomLevel);
                 }}>
                     {location.name}</button>
             </div>
