@@ -101,6 +101,15 @@ export default function AddLocationOfInterestMenu({mapState}:{mapState: MapState
                         onChange={handleChange}
                     />
                 </div>
+                <div>
+                    <label>Zoom (0-18): </label>
+                    <input
+                        type="text"
+                        name={"newZoom"}
+                        value={inputs.newZoom}
+                        onChange={handleChange}
+                    />
+                </div>
 
                 <input type="submit"/>
             </form>
