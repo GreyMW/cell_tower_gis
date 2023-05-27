@@ -2,6 +2,7 @@ import MapStateInterface from "../../../logic/object_definitions/mapStateInterfa
 import ReturnToPrevious from "../menu_subitems/ReturnToPrevious.tsx";
 import MenuList from "../../../logic/object_definitions/menuList.ts";
 import React, {useState} from "react";
+import LocationOfInterest from "../../../logic/object_definitions/locationOfInterest.ts";
 
 export default function AddLocationOfInterestMenu({mapState}:{mapState: MapStateInterface}) {
     
@@ -41,8 +42,18 @@ export default function AddLocationOfInterestMenu({mapState}:{mapState: MapState
             const parsedLat = parseFloat(inputs.newLocationLat);
             const parsedLon = parseFloat(inputs.newLocationLat);
 
+            if (inputs.newLocationLat === "") {
+                console.log("Invalid Latitude");
+                return;
+            }
+
             if (Number.isNaN(parsedLat)) {
                 console.log("Invalid Latitude");
+                return;
+            }
+
+            if (inputs.newLocationLon === "") {
+                console.log("Invalid Longitude");
                 return;
             }
 
@@ -62,13 +73,27 @@ export default function AddLocationOfInterestMenu({mapState}:{mapState: MapState
             }
 
             //validate zoom level
-            //TODO: VALIDATE ZOOM
+            const parsedZoom = parseFloat(inputs.newZoom);
 
+            if (inputs.newZoom === "") {
+                console.log("Invalid Zoom");
+                return;
+            }
 
+            if (Number.isNaN(parsedZoom)) {
+                console.log("Invalid Zoom");
+                return;
+            }
 
-            console.log("Submitted");
-            //TODO: HANDLE SUBMIT
+            if (parsedZoom < 0 || parsedZoom > 18) {
+                console.log("Invalid Zoom");
+                return;
+            }
 
+            const newLocation = new LocationOfInterest(parsedLat, parsedLon, inputs.newLocationName, parsedZoom);
+            mapState.setLocationsOfInterest([...mapState.locationsOfInterest, newLocation])
+
+            console.log("Submitted New Location of Interest.");
         }
 
         return (
