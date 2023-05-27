@@ -8,7 +8,6 @@ export default function AddLocationOfInterestMenu({mapState}:{mapState: MapState
     
     function AddLocationForm() {
 
-
         const [inputs, setInputs] = useState({
             newLocationName: "",
             newLocationLat: "",
@@ -23,77 +22,15 @@ export default function AddLocationOfInterestMenu({mapState}:{mapState: MapState
         }
 
         function handleSubmit (event: React.FormEvent<HTMLFormElement>){
+
             event.preventDefault();
 
-            //name validation
-            if (inputs.newLocationName === "") {
-                console.log("Empty Name Field")
-                return;
+            const [isValid, newLocation] = validateFormSubmissions(inputs, mapState);
+
+            if (isValid) {
+                mapState.setLocationsOfInterest([...mapState.locationsOfInterest, newLocation])
+                console.log("Submitted New Location of Interest.");
             }
-
-            for (const location of mapState.locationsOfInterest) {
-                if (location.name === inputs.newLocationName) {
-                    console.log("Name is already used");
-                    return;
-                }
-            }
-
-            //latlon validation
-            const parsedLat = parseFloat(inputs.newLocationLat);
-            const parsedLon = parseFloat(inputs.newLocationLat);
-
-            if (inputs.newLocationLat === "") {
-                console.log("Invalid Latitude");
-                return;
-            }
-
-            if (Number.isNaN(parsedLat)) {
-                console.log("Invalid Latitude");
-                return;
-            }
-
-            if (inputs.newLocationLon === "") {
-                console.log("Invalid Longitude");
-                return;
-            }
-
-            if (Number.isNaN(parsedLon)) {
-                console.log("Invalid Longitude");
-                return;
-            }
-
-            if (parsedLat < -90 || parsedLat > 90) {
-                console.log("Invalid Latitude");
-                return;
-            }
-
-            if (parsedLon < -180 || parsedLon > 180) {
-                console.log("Invalid Longitude");
-                return;
-            }
-
-            //validate zoom level
-            const parsedZoom = parseFloat(inputs.newZoom);
-
-            if (inputs.newZoom === "") {
-                console.log("Invalid Zoom");
-                return;
-            }
-
-            if (Number.isNaN(parsedZoom)) {
-                console.log("Invalid Zoom");
-                return;
-            }
-
-            if (parsedZoom < 0 || parsedZoom > 18) {
-                console.log("Invalid Zoom");
-                return;
-            }
-
-            const newLocation = new LocationOfInterest(parsedLat, parsedLon, inputs.newLocationName, parsedZoom);
-            mapState.setLocationsOfInterest([...mapState.locationsOfInterest, newLocation])
-
-            console.log("Submitted New Location of Interest.");
         }
 
         return (
@@ -146,6 +83,149 @@ export default function AddLocationOfInterestMenu({mapState}:{mapState: MapState
             <ReturnToPrevious mapState={mapState} previous={MenuList.location_of_interest}/>
             <AddLocationForm/>
         </div>
-
     )
+}
+
+type FormInputs = {
+    newLocationName: string,
+    newLocationLat: string,
+    newLocationLon: string,
+    newZoom: string,
+}
+
+type ValidationResponse = {
+    isValid: boolean,
+    errorMessage: string,
+}
+
+function validateFormSubmissions(inputs: FormInputs, mapState: MapStateInterface): [boolean, LocationOfInterest] {
+
+    const validations: ValidationResponse[] = [];
+    const parsedLat = parseFloat(inputs.newLocationLat);
+    const parsedLon = parseFloat(inputs.newLocationLat);
+    const parsedZoom = parseFloat(inputs.newZoom);
+
+    validations.push(nameValidation(inputs, mapState));
+    validations.push(latitudeValidation(inputs, parsedLat));
+    validations.push(longitudeValidation(inputs, parsedLon));
+    validations.push(zoomValidation(inputs, parsedZoom));
+
+    let isValid = true;
+    for (const validation of validations) {
+        if (!validation.isValid) {
+            isValid = false;
+            console.log(validation.errorMessage);
+        }
+    }
+
+    if (!isValid) {
+        return [isValid, new LocationOfInterest(parsedLat, parsedLon, inputs.newLocationName, parsedZoom)];
+    }
+
+    return [isValid, new LocationOfInterest(parsedLat, parsedLon, inputs.newLocationName, parsedZoom)];
+}
+
+function nameValidation(inputs: FormInputs, mapState: MapStateInterface): ValidationResponse {
+    const response: ValidationResponse = {
+        isValid: true,
+        errorMessage: "",
+    }
+    if (inputs.newLocationName === "") {
+        response.isValid = false;
+        response.errorMessage = "Empty Name Field";
+        return response;
+    }
+
+    for (const location of mapState.locationsOfInterest) {
+        if (location.name === inputs.newLocationName) {
+            response.isValid = false;
+            response.errorMessage = "Name is already used";
+            return response;
+        }
+    }
+    
+    return response;
+}
+
+function latitudeValidation(inputs: FormInputs, parsedLat: number): ValidationResponse {
+
+    const response: ValidationResponse = {
+        isValid: true,
+        errorMessage: "",
+    }
+
+    if (inputs.newLocationLat === "") {
+        response.isValid = false;
+        response.errorMessage = "Invalid Latitude";
+        return response;
+    }
+
+    if (Number.isNaN(parsedLat)) {
+        response.isValid = false;
+        response.errorMessage = "Invalid Latitude";
+        return response;
+    }
+
+    if (parsedLat < -90 || parsedLat > 90) {
+        response.isValid = false;
+        response.errorMessage = "Invalid Latitude";
+        return response;
+    }
+
+    return response;
+}
+
+function longitudeValidation(inputs: FormInputs, parsedLon: number): ValidationResponse {
+
+    const response: ValidationResponse = {
+        isValid: true,
+        errorMessage: "",
+    }
+
+    if (inputs.newLocationLon === "") {
+        response.isValid = false;
+        response.errorMessage = "Invalid Longitude";
+        return response;
+    }
+
+    if (Number.isNaN(parsedLon)) {
+        response.isValid = false;
+        response.errorMessage = "Invalid Longitude";
+        return response;
+    }
+
+    if (parsedLon < -180 || parsedLon > 180) {
+        response.isValid = false;
+        response.errorMessage = "Invalid Longitude";
+        return response;
+    }
+
+    return response;
+}
+
+function zoomValidation(inputs: FormInputs, parsedZoom: number): ValidationResponse {
+
+    const response: ValidationResponse = {
+        isValid: true,
+        errorMessage: "",
+    }
+
+    if (inputs.newZoom === "") {
+        response.isValid = false;
+        response.errorMessage = "Invalid Zoom";
+        return response;
+    }
+
+    if (Number.isNaN(parsedZoom)) {
+        response.isValid = false;
+        response.errorMessage = "Invalid Zoom";
+        return response;
+    }
+
+    if (parsedZoom < 0 || parsedZoom > 18) {
+        response.isValid = false;
+        response.errorMessage = "Invalid Zoom";
+        return response;
+    }
+    return response;
 }
