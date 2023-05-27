@@ -33,6 +33,16 @@ export default function AddLocationOfInterestMenu({mapState}:{mapState: MapState
             }
         }
 
+        function useCurrentView() {
+            const newState:FormInputs = {
+                ...inputs,
+                newLocationLat: mapState.mapPosition?.lat.toString() ?? "",
+                newLocationLon: mapState.mapPosition?.lng.toString() ?? "",
+                newZoom: mapState.zoomLevel.toString(),
+            }
+            setInputs(newState);
+        }
+
         return (
             <form onSubmit={handleSubmit}>
                 <div>
@@ -72,8 +82,11 @@ export default function AddLocationOfInterestMenu({mapState}:{mapState: MapState
                         onChange={handleChange}
                     />
                 </div>
+                <div>
+                    <button type={"button"} onClick={useCurrentView}>Use Current View</button>
+                </div>
 
-                <input type="submit"/>
+                <button type="submit">Submit</button>
             </form>
         )
     }
@@ -116,6 +129,7 @@ function validateFormSubmissions(inputs: FormInputs, mapState: MapStateInterface
             isValid = false;
             console.log(validation.errorMessage);
         }
+        //TODO: notify user of errors outside of the console
     }
 
     if (!isValid) {
