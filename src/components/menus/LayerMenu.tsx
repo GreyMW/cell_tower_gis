@@ -1,6 +1,5 @@
 import MapStateInterface from "../../logic/object_definitions/mapStateInterface.ts";
 import ReturnToMain from "./menu_subitems/ReturnToMain.tsx";
-import menuList from "../../logic/object_definitions/menuList.ts";
 import React, {useState} from "react";
 import MapLayer from "../../logic/object_definitions/mapLayer.ts";
 import MenuList from "../../logic/object_definitions/menuList.ts";
@@ -13,10 +12,10 @@ export default function LayerMenu({mapState}: {mapState: MapStateInterface }) {
         setInput(event.target.value);
     }
 
-    function LayerButtons(layerName: string, key: number) {
+    function DeleteButtons(layerName: string, key: number) {
         return (
             <div key={key}>
-                <button onClick={() => handleLayerSelection(layerName)}>{layerName}</button>
+                <button onClick={() => handleLayerDeletion(layerName)}>{layerName}</button>
             </div>
 
         )
@@ -34,9 +33,34 @@ export default function LayerMenu({mapState}: {mapState: MapStateInterface }) {
         }
     }
 
-    function handleLayerSelection(layerName: string) {
-        mapState.setCurrentLayer(layerName);
-        mapState.setCurrentMenu(menuList.main);
+    function handleLayerDeletion(layerName: string) {
+
+        //cannot delete all layers
+        if (mapState.layers.length === 1){
+            console.log("Must have at least one layer.");
+            return;
+        }
+
+        const temp = mapState.layers;
+        let index_of_deletion = -1;
+        for (let i = 0; i < temp.length; i++) {
+            if (temp[i].getLayerName() === layerName) {
+                index_of_deletion = i;
+            }
+        }
+
+        //handles if they are deleting the current layer
+        if (layerName === mapState.currentLayer) {
+            if (index_of_deletion === 0) {
+                mapState.setCurrentLayer(mapState.layers[1].getLayerName());
+            } else {
+                mapState.setCurrentLayer(mapState.layers[0].getLayerName());
+            }
+        }
+
+        temp.splice(index_of_deletion, 1);
+        mapState.setLayers([...temp]);
+        //TODO: add confirmation menu
     }
 
     return (
@@ -58,7 +82,7 @@ export default function LayerMenu({mapState}: {mapState: MapStateInterface }) {
             <div>
                 Delete:
             </div>
-            {mapState.layers.map((layerName, index) => LayerButtons(layerName.getLayerName(), index))}
+            {mapState.layers.map((layerName, index) => DeleteButtons(layerName.getLayerName(), index))}
         </div>
     )
 }

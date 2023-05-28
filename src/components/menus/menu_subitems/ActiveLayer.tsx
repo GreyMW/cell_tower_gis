@@ -12,15 +12,10 @@ function ActiveLayer({mapState}: {mapState: MapStateInterface }) {
         setMenuIsOpen(!menuIsOpen);
     }
 
-    function SelectActiveLayer() {
+    function LayerButtons(layerName: string, key: number) {
         return (
-            <div>
-                <div>
-                    <button>Is Open</button>
-                </div>
-                <div>
-                    <button onClick={handleAddDeleteLayer}>Add/Delete Layer</button>
-                </div>
+            <div key={key}>
+                <button onClick={() => mapState.setCurrentLayer(layerName)}>{layerName}</button>
             </div>
         )
     }
@@ -37,7 +32,11 @@ function ActiveLayer({mapState}: {mapState: MapStateInterface }) {
 
             <div className="dropdown">
                 <button onClick={handleOpen}>{mapState.currentLayer} <FontAwesomeIcon icon={faAngleDown} /></button>
-                {menuIsOpen ? SelectActiveLayer() : null}
+                {menuIsOpen ? mapState.layers.map((layerName, index) => LayerButtons(layerName.getLayerName(), index)) : null}
+                {menuIsOpen ?
+                    <div>
+                        <button onClick={handleAddDeleteLayer} key={-1}>Add/Delete Layer</button>
+                    </div>: null}
             </div>
         </div>
     )
