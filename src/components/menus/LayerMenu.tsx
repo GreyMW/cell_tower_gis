@@ -15,58 +15,16 @@ export default function LayerMenu({mapState}: {mapState: MapStateInterface }) {
     function DeleteButtons(layerName: string, key: number) {
         return (
             <div key={key}>
-                <button onClick={() => handleLayerDeletion(layerName)}>{layerName}</button>
+                <button onClick={() => handleLayerDeletion(layerName, mapState)}>{layerName}</button>
             </div>
 
         )
     }
 
-    function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-        event.preventDefault();
-        const isValid = validateFormSubmissions(input, mapState);
-
-        if (isValid) {
-            mapState.setLayers([...mapState.layers, new MapLayer(input)]);
-
-            mapState.setCurrentLayer(input);
-            mapState.setCurrentMenu(MenuList.main);
-        }
-    }
-
-    function handleLayerDeletion(layerName: string) {
-
-        //cannot delete all layers
-        if (mapState.layers.length === 1){
-            console.log("Must have at least one layer.");
-            return;
-        }
-
-        const temp = mapState.layers;
-        let index_of_deletion = -1;
-        for (let i = 0; i < temp.length; i++) {
-            if (temp[i].getLayerName() === layerName) {
-                index_of_deletion = i;
-            }
-        }
-
-        //handles if they are deleting the current layer
-        if (layerName === mapState.currentLayer) {
-            if (index_of_deletion === 0) {
-                mapState.setCurrentLayer(mapState.layers[1].getLayerName());
-            } else {
-                mapState.setCurrentLayer(mapState.layers[0].getLayerName());
-            }
-        }
-
-        temp.splice(index_of_deletion, 1);
-        mapState.setLayers([...temp]);
-        //TODO: add confirmation menu
-    }
-
     return (
         <div>
             <ReturnToMain mapState={mapState}/>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={(e) => handleSubmit(e, mapState, input)}>
                 <label>New Layer Name: </label>
                 <input
                     type="text"
@@ -102,4 +60,46 @@ function validateFormSubmissions(input: string, mapState: MapStateInterface): bo
         }
     }
     return true;
+}
+
+function handleLayerDeletion(layerName: string, mapState: MapStateInterface) {
+
+    //cannot delete all layers
+    if (mapState.layers.length === 1){
+        console.log("Must have at least one layer.");
+        return;
+    }
+
+    const temp = mapState.layers;
+    let index_of_deletion = -1;
+    for (let i = 0; i < temp.length; i++) {
+        if (temp[i].getLayerName() === layerName) {
+            index_of_deletion = i;
+        }
+    }
+
+    //handles if they are deleting the current layer
+    if (layerName === mapState.currentLayer) {
+        if (index_of_deletion === 0) {
+            mapState.setCurrentLayer(mapState.layers[1].getLayerName());
+        } else {
+            mapState.setCurrentLayer(mapState.layers[0].getLayerName());
+        }
+    }
+
+    temp.splice(index_of_deletion, 1);
+    mapState.setLayers([...temp]);
+    //TODO: add confirmation menu
+}
+
+function handleSubmit(event: React.FormEvent<HTMLFormElement>, mapState: MapStateInterface, input: string) {
+    event.preventDefault();
+    const isValid = validateFormSubmissions(input, mapState);
+
+    if (isValid) {
+        mapState.setLayers([...mapState.layers, new MapLayer(input)]);
+
+        mapState.setCurrentLayer(input);
+        mapState.setCurrentMenu(MenuList.main);
+    }
 }
