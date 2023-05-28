@@ -1,6 +1,7 @@
 import {LatLng, LatLngTuple} from "leaflet";
 import React from "react";
 import LocationOfInterest from "./locationOfInterest.ts";
+import MapLayer from "./mapLayer.ts";
 
 
 interface MapStateInterface {
@@ -10,6 +11,9 @@ interface MapStateInterface {
 
     currentLayer: string,
     setCurrentLayer: React.Dispatch<React.SetStateAction<string>>,
+
+    layers: MapLayer[],
+    setLayers: React.Dispatch<React.SetStateAction<MapLayer[]>>,
 
     startingPosition: LatLngTuple,
 

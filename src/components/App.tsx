@@ -8,12 +8,14 @@ import MapStateInterface from "../logic/object_definitions/mapStateInterface.ts"
 import defaultSetup from "../logic/functionality/defaultSetup.ts";
 import MenuList from "../logic/object_definitions/menuList.ts";
 import LocationOfInterest from "../logic/object_definitions/locationOfInterest.ts";
+import MapLayer from "../logic/object_definitions/mapLayer.ts";
 
 function App() {
 
 
     const [currentMenu, setCurrentMenu] = useState<number>(MenuList.main);
     const [currentLayer, setCurrentLayer] = useState<string>("default");
+    const [layers, setLayers] = useState<MapLayer[]>([new MapLayer("default"), new MapLayer("test layer 2"), new MapLayer("test layer 3")]);
     const [zoomLevel, setZoomLevel] = useState<number>(13);
     const [mapPosition, setMapPosition] = useState<LatLng | null>(null);
 
@@ -27,6 +29,9 @@ function App() {
 
         currentLayer: currentLayer,
         setCurrentLayer: setCurrentLayer,
+
+        layers: layers,
+        setLayers: setLayers,
 
         startingPosition: [49.892, -97.138],
 

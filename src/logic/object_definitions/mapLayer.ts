@@ -7,13 +7,11 @@ class MapLayer {
     private towers: MapTowers[];
     private visibility: boolean;
 
-    constructor(name = "Default") {
+    constructor(name = "Default", markers: MapMarker[] = [], towers: MapTowers[] = [], visibility = true) {
         this.layerName = name;
-        this.markers = [new MapMarker(49.89827468722066, -97.15387030160991),
-            new MapMarker(49.88948316588984, -97.10228605743923),
-            new MapMarker(49.90518513611043, -97.11970968733384)];
-        this.towers = [];
-        this.visibility = true;
+        this.markers = markers;
+        this.towers = towers;
+        this.visibility = visibility;
     }
 
 

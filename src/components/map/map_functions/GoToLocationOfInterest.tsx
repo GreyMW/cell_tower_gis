@@ -10,10 +10,7 @@ export default function GoToLocationOfInterest({mapState}: {mapState: MapStateIn
     useEffect(() => {
         if (didMountRef && mapState.locationOfInterest != null) {
 
-            // map.flyTo(mapState.locationOfInterest);
             map.setView(new LatLng(mapState.locationOfInterest.latitude, mapState.locationOfInterest.longitude), mapState.locationOfInterest.zoom);
-            // mapState.setZoomLevel(15);
-            // map.setZoom(15);
             mapState.setLocationOfInterest(null);
         }
         didMountRef.current = true;
