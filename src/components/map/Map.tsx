@@ -5,6 +5,7 @@ import MapStateInterface from "../../logic/object_definitions/mapStateInterface.
 import UpdateZoom from "./map_functions/UpdateZoom.tsx";
 import UpdateMapCenter from "./map_functions/UpdateMapCenter.tsx";
 import GoToLocationOfInterest from "./map_functions/GoToLocationOfInterest.tsx";
+import DisplayLayers from "./map_functions/DisplayLayers.tsx";
 
 
 function Map({mapState}:{mapState: MapStateInterface}) {
@@ -18,11 +19,12 @@ function Map({mapState}:{mapState: MapStateInterface}) {
             <GoToLocationOfInterest mapState={mapState}/>
             <UpdateMapCenter mapState={mapState}/>
             <UpdateZoom mapState={mapState}/>
-            {/*<ZoomTo mapState={mapState}/>*/}
-            {/*{markers.map((marker, index) => createMarker(marker, index))}*/}
+            <DisplayLayers mapState={mapState}/>
+
         </MapContainer>
 
     )
 }
+
 
 export default Map;

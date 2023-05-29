@@ -15,7 +15,7 @@ function App() {
 
     const [currentMenu, setCurrentMenu] = useState<number>(MenuList.main);
     const [currentLayer, setCurrentLayer] = useState<string>("default");
-    const [layers, setLayers] = useState<MapLayer[]>([new MapLayer("default"), new MapLayer("test layer 2"), new MapLayer("test layer 3")]);
+    const [layers, setLayers] = useState<MapLayer[]>([new MapLayer("default")]);
     const [zoomLevel, setZoomLevel] = useState<number>(13);
     const [mapPosition, setMapPosition] = useState<LatLng | null>(null);
 

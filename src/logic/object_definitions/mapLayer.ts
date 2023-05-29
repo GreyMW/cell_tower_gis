@@ -21,6 +21,12 @@ class MapLayer {
         //TODO: add validation
         this.markers.push(marker);
     }
+    
+    public addMarkers(markers: MapMarker[]){
+        for (const marker of markers) {
+            this.addMarker(marker);
+        }
+    }
 
     public addTower(tower: MapTowers) {
         //TODO: add validation

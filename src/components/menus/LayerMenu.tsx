@@ -6,6 +6,7 @@ import MenuList from "../../logic/object_definitions/menuList.ts";
 
 export default function LayerMenu({mapState}: {mapState: MapStateInterface }) {
 
+    //form input for adding a layer
     const [input, setInput] = useState("");
 
     function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
