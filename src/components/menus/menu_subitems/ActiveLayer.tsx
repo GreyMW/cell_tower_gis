@@ -26,12 +26,16 @@ function ActiveLayer({mapState}: {mapState: MapStateInterface }) {
 
     return(
         <div className={'active-layer-container main-menu-subcontainer'}>
-            <div>
-                <p>Layer:</p>
-            </div>
-
             <div className="dropdown">
-                <button onClick={handleOpen}>{mapState.currentLayer} <FontAwesomeIcon icon={faAngleDown} /></button>
+                <button
+                    className={'primary-button'}
+                    onClick={handleOpen}>
+                    <div className={'button-interior-container'}>
+                        <p>Current Layer: {mapState.currentLayer}</p> <p><FontAwesomeIcon icon={faAngleDown} /></p>
+                    </div>
+
+                </button>
+
                 {menuIsOpen ? mapState.layers.map((layerName, index) => LayerButtons(layerName.getLayerName(), index)) : null}
                 {menuIsOpen ?
                     <div>

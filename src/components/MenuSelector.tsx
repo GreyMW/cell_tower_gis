@@ -10,7 +10,7 @@ function MenuSelector({mapState}: {mapState: MapStateInterface }){
 
     function Select(){
         return(
-            <div>
+            <div className={'main-menu-container'}>
                 {mapState.currentMenu === MenuList.main ? <MainMenu mapState={mapState}/> : null}
                 {mapState.currentMenu === MenuList.location_of_interest ? <LocationsOfInterestMenu mapState={mapState}/> : null}
                 {mapState.currentMenu === MenuList.add_location_of_interest ? <AddLocationOfInterestMenu mapState={mapState}/> : null}

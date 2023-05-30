@@ -1,7 +1,69 @@
+:root {
+    --color-theme-main: #1c1f27;
+    --color-theme-secondary: #303439;
+    --color-theme-tertiary: #1d75fd;
+    --default-font-color: #595d62;
+    --active-font-color: white;
+}
+
 .main-menu-container {
-    background-color: red;
+    background-color: var(--color-theme-main);
+    color: var(--default-font-color);
+    text-align: center;
+    height: 100%;
+    display: flex;
+    flex-flow: column;
 }
 
 .main-menu-subcontainer {
-    background-color: green;
+    /*background-color: green;*/
+    color: var(--default-font-color);
+
 }
+
+.primary-button {
+    width: 80%;
+    background-color: var(--color-theme-main);
+    height: 2rem;
+    border-radius: 10px;
+    color: var(--default-font-color);
+    /*text-align: left;*/
+    border: none;
+    padding: 0 1rem;
+}
+
+.button-interior-container {
+    display: flex;
+}
+
+.right-align {
+    background-color: red;
+    margin: 0 0 0 auto;
+    justify-content: right;
+}
+
+/*latitude and longitude info*/
+.latlon {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+.ll-to-bottom {
+    margin-top: auto;
+}
+
+/*spacer related*/
+.spacer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color-theme-main);
+    height: 0.5rem;
+}
+
+.inner-spacer {
+    background-color: var(--default-font-color);
+    height: 0.1rem;
+    width: 80%;
+}
+

@@ -7,7 +7,6 @@
 
 .main-left-pane {
     background-color: blue;
-    /*height: 100vh;*/
     width: var(--left-pane-sizing);
 }
 

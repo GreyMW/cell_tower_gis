@@ -3,7 +3,7 @@ function AddPoint(){
 
     return (
         <div>
-            <button>Add Point</button>
+            <button className={'primary-button'}>Add Point</button>
         </div>
     )
 }
