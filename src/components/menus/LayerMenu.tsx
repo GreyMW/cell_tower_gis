@@ -3,6 +3,7 @@ import ReturnToMain from "./menu_subitems/ReturnToMain.tsx";
 import React, {useState} from "react";
 import MapLayer from "../../logic/object_definitions/mapLayer.ts";
 import MenuList from "../../logic/object_definitions/menuList.ts";
+import Spacer from "./menu_subitems/Spacer.tsx";
 
 export default function LayerMenu({mapState}: {mapState: MapStateInterface }) {
 
@@ -35,9 +36,7 @@ export default function LayerMenu({mapState}: {mapState: MapStateInterface }) {
                 />
                 <button type={"submit"}>Submit</button>
             </form>
-            <div className={"spacer"}>
-                SPACER
-            </div>
+            <Spacer/>
             <div>
                 Delete:
             </div>

@@ -2,7 +2,7 @@
     --color-theme-main: #1c1f27;
     --color-theme-secondary: #303439;
     --color-theme-tertiary: #1d75fd;
-    --default-font-color: #595d62;
+    --default-font-color: #686d73;
     --active-font-color: white;
 }
 
@@ -13,6 +13,7 @@
     height: 100%;
     display: flex;
     flex-flow: column;
+
 }
 
 .main-menu-subcontainer {
@@ -31,22 +32,44 @@
     border: none;
     padding: 0 1rem;
 }
+.primary-button:hover{
+    color: var(--active-font-color);
+    background-color: var(--color-theme-secondary);
+}
 
+.secondary-button{
+    width: 80%;
+    height: 2rem;
+    border-radius: 10px;
+    border: none;
+    padding: 0 1rem;
+    margin-top: 3px;
+}
+.secondary-button:hover {
+    color: var(--active-font-color);
+    background-color: var(--color-theme-tertiary);
+}
+
+/*button interiors*/
 .button-interior-container {
     display: flex;
 }
 
-.right-align {
-    background-color: red;
-    margin: 0 0 0 auto;
-    justify-content: right;
+.button-label {
+    width: 80%;
 }
+.button-arrow {
+    width: 20%
+}
+
+
 
 /*latitude and longitude info*/
 .latlon {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
+
 }
 .ll-to-bottom {
     margin-top: auto;

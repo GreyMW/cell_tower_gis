@@ -1,7 +1,7 @@
 import MapStateInterface from "../../../logic/object_definitions/mapStateInterface.ts";
 import {useState} from "react";
 import menuList from "../../../logic/object_definitions/menuList.ts";
-import {faAngleDown} from "@fortawesome/free-solid-svg-icons";
+import {faAngleDown, faAngleRight} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 
@@ -15,7 +15,7 @@ function ActiveLayer({mapState}: {mapState: MapStateInterface }) {
     function LayerButtons(layerName: string, key: number) {
         return (
             <div key={key}>
-                <button onClick={() => mapState.setCurrentLayer(layerName)}>{layerName}</button>
+                <button className={'secondary-button'} onClick={() => mapState.setCurrentLayer(layerName)}>{layerName}</button>
             </div>
         )
     }
@@ -26,22 +26,19 @@ function ActiveLayer({mapState}: {mapState: MapStateInterface }) {
 
     return(
         <div className={'active-layer-container main-menu-subcontainer'}>
-            <div className="dropdown">
-                <button
-                    className={'primary-button'}
-                    onClick={handleOpen}>
-                    <div className={'button-interior-container'}>
-                        <p>Current Layer: {mapState.currentLayer}</p> <p><FontAwesomeIcon icon={faAngleDown} /></p>
-                    </div>
+            <button
+                className={'primary-button'}
+                onClick={handleOpen}>
+                    {menuIsOpen ?
+                            <p>Current Layer: {mapState.currentLayer} <FontAwesomeIcon icon={faAngleDown} /></p>:
+                            <p>Current Layer: {mapState.currentLayer} <FontAwesomeIcon icon={faAngleRight} /></p>
+                    }
+            </button>
 
-                </button>
-
-                {menuIsOpen ? mapState.layers.map((layerName, index) => LayerButtons(layerName.getLayerName(), index)) : null}
-                {menuIsOpen ?
-                    <div>
-                        <button onClick={handleAddDeleteLayer} key={-1}>Add/Delete Layer</button>
-                    </div>: null}
-            </div>
+            {menuIsOpen ? mapState.layers.map((layerName, index) => LayerButtons(layerName.getLayerName(), index)) : null}
+            {menuIsOpen ?
+                <button className={'secondary-button'} onClick={handleAddDeleteLayer} key={-1}>Add/Delete Layer</button>
+                : null}
         </div>
     )
 }

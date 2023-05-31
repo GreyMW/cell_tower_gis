@@ -3,6 +3,7 @@ import ReturnToPrevious from "../menu_subitems/ReturnToPrevious.tsx";
 import MenuList from "../../../logic/object_definitions/menuList.ts";
 import React, {useState} from "react";
 import LocationOfInterest from "../../../logic/object_definitions/locationOfInterest.ts";
+import Spacer from "../menu_subitems/Spacer.tsx";
 
 export default function AddLocationOfInterestMenu({mapState}:{mapState: MapStateInterface}) {
     
@@ -94,6 +95,7 @@ export default function AddLocationOfInterestMenu({mapState}:{mapState: MapState
     return (
         <div>
             <ReturnToPrevious mapState={mapState} previous={MenuList.location_of_interest}/>
+            <Spacer/>
             <AddLocationForm/>
         </div>
     )
