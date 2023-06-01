@@ -1,7 +1,3 @@
 :root {
     --left-pane-sizing: 30vw;
-
-
-    /*z indexes*/
-    --dropdown-z-index: 90;
 }

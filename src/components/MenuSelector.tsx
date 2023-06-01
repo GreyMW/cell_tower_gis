@@ -5,8 +5,10 @@ import LocationsOfInterestMenu from "./menus/locations_of_interest/LocationsOfIn
 import AddPointsMenu from "./menus/AddPointsMenu.tsx";
 import MenuList from "../logic/object_definitions/menuList.ts";
 import AddLocationOfInterestMenu from "./menus/locations_of_interest/AddLocationOfInterestMenu.tsx";
-import LayerMenu from "./menus/LayerMenu.tsx";
-function MenuSelector({mapState}: {mapState: MapStateInterface }){
+import LayersMenu from "./menus/layers/LayersMenu.tsx";
+import AddLayerMenu from "./menus/AddLayerMenu.tsx";
+import AddDeleteLayersMenu from "./menus/layers/add_delete_layers/AddDeleteLayersMenu.tsx";
+function MenuSelector({mapState}: {mapState: MapStateInterface}){
 
     function Select(){
         return(
@@ -15,8 +17,9 @@ function MenuSelector({mapState}: {mapState: MapStateInterface }){
                 {mapState.currentMenu === MenuList.location_of_interest ? <LocationsOfInterestMenu mapState={mapState}/> : null}
                 {mapState.currentMenu === MenuList.add_location_of_interest ? <AddLocationOfInterestMenu mapState={mapState}/> : null}
                 {mapState.currentMenu === MenuList.add_points ? <AddPointsMenu mapState={mapState}/> : null}
-                {mapState.currentMenu === MenuList.add_layer ? <LayerMenu mapState={mapState}/> : null}
-                {mapState.currentMenu === MenuList.layer ? <LayerMenu mapState={mapState}/> : null}
+                {mapState.currentMenu === MenuList.add_layer ? <AddLayerMenu mapState={mapState}/> : null}
+                {mapState.currentMenu === MenuList.layer_menu ? <LayersMenu mapState={mapState}/> : null}
+                {mapState.currentMenu === MenuList.add_delete_layer ? <AddDeleteLayersMenu mapState={mapState}/> : null}
             </div>
         )
     }

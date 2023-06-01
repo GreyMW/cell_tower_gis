@@ -4,8 +4,6 @@ import {faAngleLeft} from "@fortawesome/free-solid-svg-icons";
 
 export default function ReturnToPrevious({mapState, previous}:{mapState: MapStateInterface, previous: number}){
     return(
-        <div>
-            <button className={'primary-button'} onClick={() => mapState.setCurrentMenu(previous)}><FontAwesomeIcon icon={faAngleLeft} /> Back </button>
-        </div>
+        <button className={'primary-button'} onClick={() => mapState.setCurrentMenu(previous)}><FontAwesomeIcon icon={faAngleLeft} /> Back </button>
     )
 }

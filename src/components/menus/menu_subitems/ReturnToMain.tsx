@@ -5,8 +5,6 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 export default function ReturnToMain({mapState}:{mapState: MapStateInterface}){
     return(
-        <div>
-            <button className={'primary-button'} onClick={() => mapState.setCurrentMenu(MenuList.main)}><FontAwesomeIcon icon={faAngleLeft} /> Return to Main</button>
-        </div>
+        <button className={'primary-button'} onClick={() => mapState.setCurrentMenu(MenuList.main)}><FontAwesomeIcon icon={faAngleLeft} /> Return to Main</button>
     )
 }

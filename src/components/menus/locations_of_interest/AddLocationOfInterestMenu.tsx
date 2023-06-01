@@ -93,7 +93,7 @@ export default function AddLocationOfInterestMenu({mapState}:{mapState: MapState
     }
 
     return (
-        <div>
+        <div className={"main-menu-container"}>
             <ReturnToPrevious mapState={mapState} previous={MenuList.location_of_interest}/>
             <Spacer/>
             <AddLocationForm/>

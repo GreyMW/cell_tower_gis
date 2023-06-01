@@ -7,24 +7,22 @@ import Spacer from "../menu_subitems/Spacer.tsx";
 export default function LocationsOfInterestMenu({mapState}:{mapState: MapStateInterface}) {
     function CreateLocationButton(location: LocationOfInterest, key: number){
         return (
-            <div key={key}>
-                <button className={'secondary-button'} onClick={() => {
+                <button key={key} className={'secondary-button'} onClick={() => {
                     mapState.setLocationOfInterest(location);
                 }}>
-                    {location.name}</button>
-            </div>
+                    {location.name}
+                </button>
+
         )
     }
     function AddLocationOfInterest({mapState}:{mapState: MapStateInterface}) {
         return (
-            <div>
-                <button className={'primary-button'} onClick={() => mapState.setCurrentMenu(MenuList.add_location_of_interest)}>Add Location of Interest</button>
-            </div>
+            <button className={'primary-button'} onClick={() => mapState.setCurrentMenu(MenuList.add_location_of_interest)}>Add Location of Interest</button>
         )
     }
 
     return (
-        <div>
+        <div className={"main-menu-container"}>
             <ReturnToMain mapState={mapState}/>
             <Spacer/>
 

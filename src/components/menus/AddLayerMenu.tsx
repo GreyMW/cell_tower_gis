@@ -5,7 +5,7 @@ import MapLayer from "../../logic/object_definitions/mapLayer.ts";
 import MenuList from "../../logic/object_definitions/menuList.ts";
 import Spacer from "./menu_subitems/Spacer.tsx";
 
-export default function LayerMenu({mapState}: {mapState: MapStateInterface }) {
+export default function AddLayerMenu({mapState}: {mapState: MapStateInterface }) {
 
     //form input for adding a layer
     const [input, setInput] = useState("");

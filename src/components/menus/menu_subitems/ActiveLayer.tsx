@@ -25,7 +25,7 @@ function ActiveLayer({mapState}: {mapState: MapStateInterface }) {
     }
 
     return(
-        <div className={'active-layer-container main-menu-subcontainer'}>
+        <div className={'main-menu-subcontainer'}>
             <button
                 className={'primary-button'}
                 onClick={handleOpen}>
