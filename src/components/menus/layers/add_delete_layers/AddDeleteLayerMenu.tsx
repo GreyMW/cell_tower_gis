@@ -1,18 +1,15 @@
-import MapStateInterface from "../../logic/object_definitions/mapStateInterface.ts";
-import ReturnToMain from "./menu_subitems/ReturnToMain.tsx";
+import MapStateInterface from "../../../../logic/object_definitions/mapStateInterface.ts";
 import React, {useState} from "react";
-import MapLayer from "../../logic/object_definitions/mapLayer.ts";
-import MenuList from "../../logic/object_definitions/menuList.ts";
-import Spacer from "./menu_subitems/Spacer.tsx";
+import MapLayer from "../../../../logic/object_definitions/mapLayer.ts";
+import MenuList from "../../../../logic/object_definitions/menuList.ts";
+import Spacer from "../../menu_subitems/Spacer.tsx";
+import ReturnToPrevious from "../../menu_subitems/ReturnToPrevious.tsx";
+import menuList from "../../../../logic/object_definitions/menuList.ts";
 
-export default function AddLayerMenu({mapState}: {mapState: MapStateInterface }) {
+export default function AddDeleteLayerMenu({mapState}: {mapState: MapStateInterface }) {
 
     //form input for adding a layer
     const [input, setInput] = useState("");
-
-    function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
-        setInput(event.target.value);
-    }
 
     function DeleteButtons(layerName: string, key: number) {
         return (
@@ -25,17 +22,9 @@ export default function AddLayerMenu({mapState}: {mapState: MapStateInterface })
 
     return (
         <div>
-            <ReturnToMain mapState={mapState}/>
-            <form onSubmit={(e) => handleSubmit(e, mapState, input)}>
-                <label>New Layer Name: </label>
-                <input
-                    type="text"
-                    name={"newLocationLat"}
-                    value={input}
-                    onChange={handleChange}
-                />
-                <button type={"submit"}>Submit</button>
-            </form>
+            <ReturnToPrevious mapState={mapState} previous={menuList.layer_menu}/>
+            <Spacer/>
+            <AddLayerForm key={"form"} input={input} mapState={mapState} setInput={setInput}/>
             <Spacer/>
             <div>
                 Delete:
@@ -44,7 +33,24 @@ export default function AddLayerMenu({mapState}: {mapState: MapStateInterface })
         </div>
     )
 }
+function AddLayerForm({input, mapState, setInput}:{input: string, mapState: MapStateInterface, setInput: React.Dispatch<React.SetStateAction<string>>}){
+    return (
+        <form onSubmit={(e) => handleSubmit(e, mapState, input)}>
+            <label>New Layer Name: </label>
+            <input
+                type="text"
+                name={"newLocationLat"}
+                value={input}
+                onChange={(e) => handleChange(e, setInput)}
+            />
+            <button type={"submit"}>Submit</button>
+        </form>
+    )
+}
 
+function handleChange(event: React.ChangeEvent<HTMLInputElement>, setInput: React.Dispatch<React.SetStateAction<string>>) {
+    setInput(event.target.value);
+}
 function validateFormSubmissions(input: string, mapState: MapStateInterface): boolean {
     for (const layer of mapState.layers) {
         if (layer.getLayerName() === input) {
@@ -100,6 +106,6 @@ function handleSubmit(event: React.FormEvent<HTMLFormElement>, mapState: MapStat
         mapState.setLayers([...mapState.layers, new MapLayer(input)]);
 
         mapState.setCurrentLayer(input);
-        mapState.setCurrentMenu(MenuList.main);
+        mapState.setCurrentMenu(MenuList.layer_menu);
     }
 }

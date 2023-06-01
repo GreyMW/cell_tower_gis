@@ -4,20 +4,24 @@ import LocationOfInterest from "../../../logic/object_definitions/locationOfInte
 import MenuList from "../../../logic/object_definitions/menuList.ts";
 import Spacer from "../menu_subitems/Spacer.tsx";
 
-export default function LocationsOfInterestMenu({mapState}:{mapState: MapStateInterface}) {
-    function CreateLocationButton(location: LocationOfInterest, key: number){
+export default function LocationsOfInterestMenu({mapState}: { mapState: MapStateInterface }) {
+    function CreateLocationButton(location: LocationOfInterest, key: number) {
         return (
-                <button key={key} className={'secondary-button'} onClick={() => {
+            <button key={key} className={'secondary-button'} onClick={
+                () => {
                     mapState.setLocationOfInterest(location);
-                }}>
-                    {location.name}
-                </button>
-
+                }}
+            >
+                {location.name}
+            </button>
         )
     }
-    function AddLocationOfInterest({mapState}:{mapState: MapStateInterface}) {
+
+    function AddLocationOfInterest({mapState}: { mapState: MapStateInterface }) {
         return (
-            <button className={'primary-button'} onClick={() => mapState.setCurrentMenu(MenuList.add_location_of_interest)}>Add Location of Interest</button>
+            <button className={'primary-button'}
+                    onClick={() => mapState.setCurrentMenu(MenuList.add_location_of_interest)}>Add Location of
+                Interest</button>
         )
     }
 
