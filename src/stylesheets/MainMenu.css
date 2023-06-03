@@ -53,6 +53,28 @@
     background-color: var(--color-theme-tertiary);
 }
 
+/*form stuff*/
+
+.form-group-label {
+    display: block;
+    transition: all 0.3s;
+    transform: translateY(0rem);
+
+}
+
+.form-group-input {
+    display: block;
+    transition: all 0.3s;
+}
+
+.form-group-input:placeholder-shown + .form-group-label {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-4rem);
+}
+
+
+
 /*latitude and longitude info*/
 .latlon {
     display: flex;

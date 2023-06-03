@@ -5,23 +5,15 @@ import MenuList from "../../../../logic/object_definitions/menuList.ts";
 import Spacer from "../../menu_subitems/Spacer.tsx";
 import ReturnToPrevious from "../../menu_subitems/ReturnToPrevious.tsx";
 import menuList from "../../../../logic/object_definitions/menuList.ts";
+import mapStateInterface from "../../../../logic/object_definitions/mapStateInterface.ts";
 
 export default function AddDeleteLayerMenu({mapState}: {mapState: MapStateInterface }) {
 
     //form input for adding a layer
     const [input, setInput] = useState("");
 
-    function DeleteButtons(layerName: string, key: number) {
-        return (
-            <div key={key}>
-                <button onClick={() => handleLayerDeletion(layerName, mapState)}>{layerName}</button>
-            </div>
-
-        )
-    }
-
     return (
-        <div>
+        <div className={'main-menu-container'}>
             <ReturnToPrevious mapState={mapState} previous={menuList.layer_menu}/>
             <Spacer/>
             <AddLayerForm key={"form"} input={input} mapState={mapState} setInput={setInput}/>
@@ -29,21 +21,49 @@ export default function AddDeleteLayerMenu({mapState}: {mapState: MapStateInterf
             <div>
                 Delete:
             </div>
-            {mapState.layers.map((layerName, index) => DeleteButtons(layerName.getLayerName(), index))}
+            {/*{mapState.layers.map((layerName, index) => DeleteButton(layerName.getLayerName(), index, mapState))}*/}
+            <DeleteButtons mapState={mapState}/>
+            <Spacer/>
         </div>
     )
 }
+
+function DeleteButtons({mapState}: {mapState: MapStateInterface }) {
+    return (
+        <div className={'sub-menu-container'}>
+            {mapState.layers.map((layerName, index) => DeleteButton(layerName.getLayerName(), index, mapState))}
+        </div>
+
+    )
+}
+function DeleteButton(layerName: string, key: number, mapState: mapStateInterface) {
+    return (
+        <div key={key}>
+            <button
+                onClick={() => handleLayerDeletion(layerName, mapState)}
+                className={'secondary-button'}
+            >{layerName}</button>
+        </div>
+
+    )
+}
+
 function AddLayerForm({input, mapState, setInput}:{input: string, mapState: MapStateInterface, setInput: React.Dispatch<React.SetStateAction<string>>}){
     return (
         <form onSubmit={(e) => handleSubmit(e, mapState, input)}>
-            <label>New Layer Name: </label>
-            <input
-                type="text"
-                name={"newLocationLat"}
-                value={input}
-                onChange={(e) => handleChange(e, setInput)}
-            />
-            <button type={"submit"}>Submit</button>
+            <div className={'form-group'} >
+
+                <input
+                    type="text"
+                    name={"newLocationLat"}
+                    value={input}
+                    onChange={(e) => handleChange(e, setInput)}
+                    className={'form-group-input'}
+                    placeholder={"Name"}
+                />
+                <label className={'form-group-label'}>New Layer Name: </label>
+            </div>
+            <button className={'secondary-button'} type={"submit"}>Submit</button>
         </form>
     )
 }
