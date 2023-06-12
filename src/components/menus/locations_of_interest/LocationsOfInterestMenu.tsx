@@ -6,6 +6,7 @@ import Spacer from "../menu_subitems/Spacer.tsx";
 
 export default function LocationsOfInterestMenu({mapState}: { mapState: MapStateInterface }) {
     function CreateLocationButton(location: LocationOfInterest, key: number) {
+
         return (
             <button key={key} className={'secondary-button'} onClick={
                 () => {

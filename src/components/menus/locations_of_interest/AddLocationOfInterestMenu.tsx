@@ -6,6 +6,7 @@ import LocationOfInterest from "../../../logic/object_definitions/locationOfInte
 import Spacer from "../menu_subitems/Spacer.tsx";
 
 export default function AddLocationOfInterestMenu({mapState}:{mapState: MapStateInterface}) {
+    // console.log(mapState.locationsOfInterest);
     
     function AddLocationForm() {
 
@@ -29,7 +30,14 @@ export default function AddLocationOfInterestMenu({mapState}:{mapState: MapState
             const [isValid, newLocation] = validateFormSubmissions(inputs, mapState);
 
             if (isValid) {
-                mapState.setLocationsOfInterest([...mapState.locationsOfInterest, newLocation])
+                // console.log(newLocation);
+                // console.log(mapState.locationsOfInterest);
+
+                mapState.setLocationsOfInterest([...mapState.locationsOfInterest, newLocation]);
+                // mapState.setLocationsOfInterest([...mapState.locationsOfInterest, ...mapState.locationsOfInterest]);
+                // const test = [newLocation];
+                // mapState.setLocationsOfInterest(test);
+
                 console.log("Submitted New Location of Interest.");
             }
         }
@@ -117,7 +125,7 @@ function validateFormSubmissions(inputs: FormInputs, mapState: MapStateInterface
 
     const validations: ValidationResponse[] = [];
     const parsedLat = parseFloat(inputs.newLocationLat);
-    const parsedLon = parseFloat(inputs.newLocationLat);
+    const parsedLon = parseFloat(inputs.newLocationLon);
     const parsedZoom = parseFloat(inputs.newZoom);
 
     validations.push(nameValidation(inputs, mapState));
@@ -132,10 +140,6 @@ function validateFormSubmissions(inputs: FormInputs, mapState: MapStateInterface
             console.log(validation.errorMessage);
         }
         //TODO: notify user of errors outside of the console
-    }
-
-    if (!isValid) {
-        return [isValid, new LocationOfInterest(parsedLat, parsedLon, inputs.newLocationName, parsedZoom)];
     }
 
     return [isValid, new LocationOfInterest(parsedLat, parsedLon, inputs.newLocationName, parsedZoom)];
