@@ -1,12 +1,6 @@
-:root {
-    --color-theme-main: #1c1f27;
-    --color-theme-secondary: #303439;
-    --color-theme-tertiary: #1d75fd;
-    --default-font-color: #686d73;
-    --active-font-color: white;
+@import "forms.css";
+@import "global_vars.css";
 
-    --menu-item-width: 90%;
-}
 
 .main-menu-container {
     background-color: var(--color-theme-main);
@@ -52,29 +46,6 @@
     color: var(--active-font-color);
     background-color: var(--color-theme-tertiary);
 }
-
-/*form stuff*/
-
-.form-group-label {
-    display: block;
-    transition: all 0.3s;
-    transform: translateY(0rem);
-
-}
-
-.form-group-input {
-    display: block;
-    transition: all 0.3s;
-}
-
-.form-group-input:placeholder-shown + .form-group-label {
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-4rem);
-}
-
-
-
 /*latitude and longitude info*/
 .latlon {
     display: flex;
@@ -106,3 +77,20 @@
     width: 100%;
 }
 
+.full-width {
+    width: 100%;
+}
+
+.half-width {
+    width: 45%;
+}
+
+.side-by-side-buttons {
+    display: flex;
+    gap: 5%;
+    justify-content: center;
+}
+
+.top-margin-10px {
+    margin-top: 10px;
+}

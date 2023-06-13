@@ -1,4 +1,4 @@
-@import "../stylesheets/CSS_Variables.css";
+@import "global_vars.css";
 
 .main-container {
     display: flex;

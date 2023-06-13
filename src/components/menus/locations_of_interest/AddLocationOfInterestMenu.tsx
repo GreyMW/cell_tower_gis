@@ -5,6 +5,7 @@ import React, {useState} from "react";
 import LocationOfInterest from "../../../logic/object_definitions/locationOfInterest.ts";
 import Spacer from "../menu_subitems/Spacer.tsx";
 import LatLonZoomViewer from "../menu_subitems/LatLonZoomViewer.tsx";
+// import "../../../stylesheets/MainMenu.css";
 
 export default function AddLocationOfInterestMenu({mapState}:{mapState: MapStateInterface}) {
     // console.log(mapState.locationsOfInterest);
@@ -47,49 +48,76 @@ export default function AddLocationOfInterestMenu({mapState}:{mapState: MapState
         }
 
         return (
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <label>Location Name: </label>
-                    <input
-                        type="text"
-                        name={"newLocationName"}
-                        value={inputs.newLocationName}
-                        onChange={handleChange}
-                    />
-                </div>
-                <div>
-                    <label>Latitude: </label>
-                    <input
-                        type="text"
-                        name={"newLocationLat"}
-                        value={inputs.newLocationLat}
-                        onChange={handleChange}
-                    />
+            <form onSubmit={handleSubmit} className={'form-container top-margin-10px'} autoComplete={'off'}>
+                <div  className={"left-right-form"}>
+                    <div className={"form-labels-container"}>
+                        <div>
+                            <label>Location Name: </label>
+                        </div>
+                        <div>
+                            <label>Latitude: </label>
+                        </div>
+                        <div>
+                            <label>Longitude: </label>
+                        </div>
+                        <div>
+                            <label>Zoom (0-18): </label>
+                        </div>
+                    </div>
+                    <div className={'form-inputs-container'}>
+                        <div className={"input-data"}>
+                            <input
+                                type="text"
+                                name={"newLocationName"}
+                                value={inputs.newLocationName}
+                                onChange={handleChange}
+                                className={'faded-input'}
+                            />
+                            <div className={"underline"}></div>
+                        </div>
+
+                        <div className={"input-data"}>
+                            <input
+                                type="text"
+                                name={"newLocationLat"}
+                                value={inputs.newLocationLat}
+                                onChange={handleChange}
+                                className={'faded-input'}
+                            />
+                            <div className={"underline"}></div>
+                        </div>
+
+                        <div className={"input-data"}>
+                            <input
+                                type="text"
+                                name={"newLocationLon"}
+                                value={inputs.newLocationLon}
+                                onChange={handleChange}
+                                className={'faded-input'}
+                            />
+                            <div className={"underline"}></div>
+                        </div>
+
+                        <div className={"input-data"}>
+                            <input
+                                type="text"
+                                name={"newZoom"}
+                                value={inputs.newZoom}
+                                onChange={handleChange}
+                                className={'faded-input'}
+                            />
+                            <div className={"underline"}></div>
+                        </div>
+                    </div>
                 </div>
 
-                <div>
-                    <label>Longitude: </label>
-                    <input
-                        type="text"
-                        name={"newLocationLon"}
-                        value={inputs.newLocationLon}
-                        onChange={handleChange}
-                    />
-                </div>
-                <div>
-                    <label>Zoom (0-18): </label>
-                    <input
-                        type="text"
-                        name={"newZoom"}
-                        value={inputs.newZoom}
-                        onChange={handleChange}
-                    />
-                </div>
-                <div>
-                    <button type={"button"} onClick={useCurrentView}>Use Current View</button>
+
+                <div className={"side-by-side-buttons top-margin-10px"}>
+                    <button className={'secondary-button half-width'} type={"button"} onClick={useCurrentView}>Use Current View</button>
+                    <button className={'secondary-button half-width'} type="submit">Submit</button>
                 </div>
 
-                <button type="submit">Submit</button>
+
             </form>
         )
     }

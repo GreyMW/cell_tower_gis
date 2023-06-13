@@ -1,0 +1,68 @@
+@import "global_vars.css";
+
+
+.form-container {
+    width: var(--menu-item-width);
+}
+
+.form-labels-container {
+    text-align: left;
+    width: 40%;
+}
+
+.form-labels-container * {
+    height: 1.25rem;
+}
+
+.left-right-form {
+    display: flex;
+}
+
+.form-inputs-container {
+    width: 60%;
+}
+
+
+.input-data {
+    position: relative;
+}
+
+.input-data input {
+    display: block;
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid var(--default-font-color);
+    outline: none;
+    color: var(--active-font-color);
+}
+
+.input-data .underline {
+    position: absolute;
+    bottom: 0;
+    height: 2px;
+    width: 100%;
+    background-color: var(--color-theme-tertiary);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+
+.input-data input:focus ~ .underline {
+    transform: scale(1);
+}
+
+/*this makes all the children of this component have 100% width*/
+.form-inputs-container * {
+    width: 100%;
+    height: 1.25rem;
+}
+
+
+
+/*.input-data input:focus ~ .underline:before{*/
+/*    transform: scale(1);*/
+/*}*/
+
+/*.input-data input:focus ~ .underline {*/
+/*    background-color: green;*/
+/*}*/

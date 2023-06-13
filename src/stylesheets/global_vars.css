@@ -1,0 +1,10 @@
+:root {
+    --color-theme-main: #1c1f27;
+    --color-theme-secondary: #303439;
+    --color-theme-tertiary: #1d75fd;
+    --default-font-color: #686d73;
+    --active-font-color: white;
+
+    --left-pane-sizing: 30vw;
+    --menu-item-width: 90%;
+}

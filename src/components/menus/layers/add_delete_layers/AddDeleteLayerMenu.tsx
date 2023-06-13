@@ -6,6 +6,7 @@ import Spacer from "../../menu_subitems/Spacer.tsx";
 import ReturnToPrevious from "../../menu_subitems/ReturnToPrevious.tsx";
 import menuList from "../../../../logic/object_definitions/menuList.ts";
 import mapStateInterface from "../../../../logic/object_definitions/mapStateInterface.ts";
+import LatLonZoomViewer from "../../menu_subitems/LatLonZoomViewer.tsx";
 
 export default function AddDeleteLayerMenu({mapState}: {mapState: MapStateInterface }) {
 
@@ -18,16 +19,22 @@ export default function AddDeleteLayerMenu({mapState}: {mapState: MapStateInterf
             <Spacer/>
             <AddLayerForm key={"form"} input={input} mapState={mapState} setInput={setInput}/>
             <Spacer/>
-            <div>
-                Delete:
-            </div>
+            <DeleteLabel/>
             {/*{mapState.layers.map((layerName, index) => DeleteButton(layerName.getLayerName(), index, mapState))}*/}
             <DeleteButtons mapState={mapState}/>
             <Spacer/>
+            <LatLonZoomViewer mapState={mapState}/>
         </div>
     )
 }
 
+function DeleteLabel() {
+    return (
+        <div className={"top-margin-10px"}>
+            Delete:
+        </div>
+    )
+}
 function DeleteButtons({mapState}: {mapState: MapStateInterface }) {
     return (
         <div className={'sub-menu-container'}>
@@ -50,20 +57,30 @@ function DeleteButton(layerName: string, key: number, mapState: mapStateInterfac
 
 function AddLayerForm({input, mapState, setInput}:{input: string, mapState: MapStateInterface, setInput: React.Dispatch<React.SetStateAction<string>>}){
     return (
-        <form onSubmit={(e) => handleSubmit(e, mapState, input)}>
-            <div className={'form-group'} >
+        <form className={'form-container top-margin-10px'} onSubmit={(e) => handleSubmit(e, mapState, input)} autoComplete={'off'}>
+            <div  className={"left-right-form"}>
+                <div className={"form-labels-container"}>
+                    <label className={'form-group-label'}>Layer Name: </label>
+                </div>
+                <div className={'form-inputs-container'}>
+                    <div className={"input-data"}>
+                        <input
+                            type="text"
+                            name={"newLocationLat"}
+                            value={input}
+                            onChange={(e) => handleChange(e, setInput)}
+                            className={'form-group-input'}
+                            // placeholder={"Name"}
+                        />
+                        <div className={"underline"}></div>
+                    </div>
 
-                <input
-                    type="text"
-                    name={"newLocationLat"}
-                    value={input}
-                    onChange={(e) => handleChange(e, setInput)}
-                    className={'form-group-input'}
-                    placeholder={"Name"}
-                />
-                <label className={'form-group-label'}>New Layer Name: </label>
+                </div>
+
+
+
             </div>
-            <button className={'secondary-button'} type={"submit"}>Submit</button>
+            <button className={'secondary-button full-width top-margin-10px'} type={"submit"}>Submit</button>
         </form>
     )
 }
