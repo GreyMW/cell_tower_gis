@@ -4,6 +4,7 @@ import MenuList from "../../../logic/object_definitions/menuList.ts";
 import React, {useState} from "react";
 import LocationOfInterest from "../../../logic/object_definitions/locationOfInterest.ts";
 import Spacer from "../menu_subitems/Spacer.tsx";
+import LatLonZoomViewer from "../menu_subitems/LatLonZoomViewer.tsx";
 
 export default function AddLocationOfInterestMenu({mapState}:{mapState: MapStateInterface}) {
     // console.log(mapState.locationsOfInterest);
@@ -30,14 +31,7 @@ export default function AddLocationOfInterestMenu({mapState}:{mapState: MapState
             const [isValid, newLocation] = validateFormSubmissions(inputs, mapState);
 
             if (isValid) {
-                // console.log(newLocation);
-                // console.log(mapState.locationsOfInterest);
-
                 mapState.setLocationsOfInterest([...mapState.locationsOfInterest, newLocation]);
-                // mapState.setLocationsOfInterest([...mapState.locationsOfInterest, ...mapState.locationsOfInterest]);
-                // const test = [newLocation];
-                // mapState.setLocationsOfInterest(test);
-
                 console.log("Submitted New Location of Interest.");
             }
         }
@@ -105,6 +99,7 @@ export default function AddLocationOfInterestMenu({mapState}:{mapState: MapState
             <ReturnToPrevious mapState={mapState} previous={MenuList.location_of_interest}/>
             <Spacer/>
             <AddLocationForm/>
+            <LatLonZoomViewer mapState={mapState}/>
         </div>
     )
 }
