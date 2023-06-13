@@ -13,6 +13,7 @@ export default function LayersMenu({mapState}: {mapState: MapStateInterface}) {
             <ActiveLayer mapState={mapState}/>
             <Spacer/>
             <ButtonAddDeleteLayer mapState={mapState}/>
+            <Spacer/>
 
 
             <LatLonZoomViewer mapState={mapState}/>

@@ -20,7 +20,6 @@ export default function AddDeleteLayerMenu({mapState}: {mapState: MapStateInterf
             <AddLayerForm key={"form"} input={input} mapState={mapState} setInput={setInput}/>
             <Spacer/>
             <DeleteLabel/>
-            {/*{mapState.layers.map((layerName, index) => DeleteButton(layerName.getLayerName(), index, mapState))}*/}
             <DeleteButtons mapState={mapState}/>
             <Spacer/>
             <LatLonZoomViewer mapState={mapState}/>
@@ -74,11 +73,7 @@ function AddLayerForm({input, mapState, setInput}:{input: string, mapState: MapS
                         />
                         <div className={"underline"}></div>
                     </div>
-
                 </div>
-
-
-
             </div>
             <button className={'secondary-button full-width top-margin-10px'} type={"submit"}>Submit</button>
         </form>

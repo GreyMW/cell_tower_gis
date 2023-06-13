@@ -35,6 +35,7 @@ export default function LocationsOfInterestMenu({mapState}: { mapState: MapState
             {mapState.locationsOfInterest.map((loc, index) => CreateLocationButton(loc, index))}
             <Spacer/>
             <AddLocationOfInterest mapState={mapState}/>
+            <Spacer/>
             <LatLonZoomViewer mapState={mapState}/>
         </div>
     )
