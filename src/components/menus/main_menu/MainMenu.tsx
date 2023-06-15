@@ -1,10 +1,12 @@
-import AddPoint from "../../AddPoint.tsx";
 import MapStateInterface from "../../../logic/object_definitions/mapStateInterface.ts";
 import "../../../stylesheets/MainMenu.css";
 import Spacer from "../menu_subitems/Spacer.tsx";
 import ButtonLocationsOfInterest from "./ButtonLocationsOfInterest.tsx";
 import LatLonZoomViewer from "../menu_subitems/LatLonZoomViewer.tsx";
 import ButtonLayers from "./ButtonLayers.tsx";
+import ButtonAddPoint from "./ButtonPoints.tsx";
+import ButtonTowers from "./ButtonTowers.tsx";
+import ButtonAddAnnotations from "./ButtonAddAnnotations.tsx";
 
 export default function MainMenu({mapState}: {mapState: MapStateInterface }) {
     return (
@@ -15,9 +17,16 @@ export default function MainMenu({mapState}: {mapState: MapStateInterface }) {
             <Spacer/>
             <ButtonLayers mapState={mapState}/>
             <Spacer/>
-            <AddPoint/>
+            <ButtonAddPoint/>
             <Spacer/>
+            <ButtonTowers/>
+            <Spacer/>
+            <ButtonAddAnnotations/>
+            <Spacer/>
+
+
             <LatLonZoomViewer mapState={mapState}/>
+
         </div>
     )
 }
