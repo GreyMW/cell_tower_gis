@@ -2,7 +2,7 @@
 function ButtonAddAnnotations(){
 
     return (
-        <button className={'primary-button'}>Points</button>
+        <button className={'primary-button'}>Annotations</button>
     )
 }
 

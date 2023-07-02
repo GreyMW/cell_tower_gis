@@ -2,7 +2,7 @@ import "../stylesheets/MainMenu.css";
 import MapStateInterface from "../logic/object_definitions/mapStateInterface.ts";
 import MainMenu from "./menus/main_menu/MainMenu.tsx";
 import LocationsOfInterestMenu from "./menus/locations_of_interest/LocationsOfInterestMenu.tsx";
-import AddPointsMenu from "./menus/AddPointsMenu.tsx";
+import AddPointsMenu from "./menus/points/AddPointsMenu.tsx";
 import MenuList from "../logic/object_definitions/menuList.ts";
 import AddLocationOfInterestMenu from "./menus/locations_of_interest/AddLocationOfInterestMenu.tsx";
 import LayersMenu from "./menus/layers/LayersMenu.tsx";
