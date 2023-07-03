@@ -5,6 +5,9 @@ import React, {useState} from "react";
 import LocationOfInterest from "../../../logic/object_definitions/locationOfInterest.ts";
 import Spacer from "../menu_subitems/Spacer.tsx";
 import LatLonZoomViewer from "../menu_subitems/LatLonZoomViewer.tsx";
+import ValidationResponse from "../../../logic/object_definitions/validationResponse.ts";
+import latitudeValidation from "../../../logic/functionality/latitudeValidation.ts";
+import longitudeValidation from "../../../logic/functionality/longitudeValidation.ts";
 // import "../../../stylesheets/MainMenu.css";
 
 export default function AddLocationOfInterestMenu({mapState}:{mapState: MapStateInterface}) {
@@ -139,11 +142,6 @@ type FormInputs = {
     newZoom: string,
 }
 
-type ValidationResponse = {
-    isValid: boolean,
-    errorMessage: string,
-}
-
 function validateFormSubmissions(inputs: FormInputs, mapState: MapStateInterface): [boolean, LocationOfInterest] {
 
     const validations: ValidationResponse[] = [];
@@ -152,8 +150,8 @@ function validateFormSubmissions(inputs: FormInputs, mapState: MapStateInterface
     const parsedZoom = parseFloat(inputs.newZoom);
 
     validations.push(nameValidation(inputs, mapState));
-    validations.push(latitudeValidation(inputs, parsedLat));
-    validations.push(longitudeValidation(inputs, parsedLon));
+    validations.push(latitudeValidation(inputs.newLocationLat));
+    validations.push(longitudeValidation(inputs.newLocationLon));
     validations.push(zoomValidation(inputs, parsedZoom));
 
     let isValid = true;
@@ -187,62 +185,6 @@ function nameValidation(inputs: FormInputs, mapState: MapStateInterface): Valida
         }
     }
     
-    return response;
-}
-
-function latitudeValidation(inputs: FormInputs, parsedLat: number): ValidationResponse {
-
-    const response: ValidationResponse = {
-        isValid: true,
-        errorMessage: "",
-    }
-
-    if (inputs.newLocationLat === "") {
-        response.isValid = false;
-        response.errorMessage = "Invalid Latitude";
-        return response;
-    }
-
-    if (Number.isNaN(parsedLat)) {
-        response.isValid = false;
-        response.errorMessage = "Invalid Latitude";
-        return response;
-    }
-
-    if (parsedLat < -90 || parsedLat > 90) {
-        response.isValid = false;
-        response.errorMessage = "Invalid Latitude";
-        return response;
-    }
-
-    return response;
-}
-
-function longitudeValidation(inputs: FormInputs, parsedLon: number): ValidationResponse {
-
-    const response: ValidationResponse = {
-        isValid: true,
-        errorMessage: "",
-    }
-
-    if (inputs.newLocationLon === "") {
-        response.isValid = false;
-        response.errorMessage = "Invalid Longitude";
-        return response;
-    }
-
-    if (Number.isNaN(parsedLon)) {
-        response.isValid = false;
-        response.errorMessage = "Invalid Longitude";
-        return response;
-    }
-
-    if (parsedLon < -180 || parsedLon > 180) {
-        response.isValid = false;
-        response.errorMessage = "Invalid Longitude";
-        return response;
-    }
-
     return response;
 }
 
