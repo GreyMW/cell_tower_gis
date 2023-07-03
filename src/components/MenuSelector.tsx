@@ -7,6 +7,7 @@ import MenuList from "../logic/object_definitions/menuList.ts";
 import AddLocationOfInterestMenu from "./menus/locations_of_interest/AddLocationOfInterestMenu.tsx";
 import LayersMenu from "./menus/layers/LayersMenu.tsx";
 import AddDeleteLayerMenu from "./menus/layers/add_delete_layers/AddDeleteLayerMenu.tsx";
+import AnnotationsMenu from "./menus/annotations/AnnotationsMenu.tsx";
 function MenuSelector({mapState}: {mapState: MapStateInterface}){
 
     function Select(){
@@ -18,6 +19,7 @@ function MenuSelector({mapState}: {mapState: MapStateInterface}){
                 {mapState.currentMenu === MenuList.add_points ? <AddPointsMenu mapState={mapState}/> : null}
                 {mapState.currentMenu === MenuList.add_delete_layer ? <AddDeleteLayerMenu mapState={mapState}/> : null}
                 {mapState.currentMenu === MenuList.layer_menu ? <LayersMenu mapState={mapState}/> : null}
+                {mapState.currentMenu === MenuList.annotation_menu ? <AnnotationsMenu mapState={mapState}/> : null}
             </div>
         )
     }
