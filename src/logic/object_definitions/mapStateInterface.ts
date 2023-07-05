@@ -28,6 +28,9 @@ interface MapStateInterface {
 
     locationsOfInterest: LocationOfInterest[],
     setLocationsOfInterest: React.Dispatch<React.SetStateAction<LocationOfInterest[]>>,
+
+    forceRerender: boolean,
+    setForceRerender: React.Dispatch<React.SetStateAction<boolean>>,
 }
 
 export default MapStateInterface;

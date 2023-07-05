@@ -19,6 +19,7 @@ class MapLayer {
     //setters and adders
     public addMarker(marker: MapMarker) {
         //TODO: add validation
+        // this.markers = [...this.markers, marker];
         this.markers.push(marker);
     }
     

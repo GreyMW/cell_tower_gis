@@ -10,7 +10,6 @@ import getCurrentLayerReference from "../../../logic/functionality/getCurrentLay
 import MapMarker from "../../../logic/object_definitions/mapMarker.ts";
 import LatLonZoomViewer from "../menu_subitems/LatLonZoomViewer.tsx";
 
-
 export default function AddPointsMenu({mapState}:{mapState: MapStateInterface}){
 
     const [inputLatitude, setInputLatitude] = useState("");
@@ -118,8 +117,6 @@ function handleSubmit(event: React.FormEvent<HTMLFormElement>, mapState: MapStat
         const newMapMarker = new MapMarker(parsedLat, parsedLon);
         //TODO: make the marker inherit the color scheme of the layer
         currentLayer?.addMarker(newMapMarker);
-        //TODO: force a map refresh so the marker appears
-
+        mapState.setForceRerender(!mapState.forceRerender);
     }
-
 }

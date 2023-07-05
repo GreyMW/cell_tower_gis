@@ -22,6 +22,8 @@ function App() {
     const [locationOfInterest, setLocationOfInterest] = useState<LocationOfInterest | null>(null);
     const [locationsOfInterest, setLocationsOfInterest] = useState<LocationOfInterest[]>([]);
 
+    const [forceRerender, setForceRerender] = useState(false);
+
     const mapState: MapStateInterface = {
 
         currentMenu: currentMenu,
@@ -46,6 +48,9 @@ function App() {
 
         locationsOfInterest: locationsOfInterest,
         setLocationsOfInterest: setLocationsOfInterest,
+
+        forceRerender: forceRerender,
+        setForceRerender: setForceRerender
     }
 
     //sets all of our mapState to default values
@@ -58,6 +63,7 @@ function App() {
             <div className={"main-left-pane"}>
                 <MenuSelector mapState={mapState}/>
             </div>
+            {forceRerender ? "" : ""}
             <Map mapState={mapState}/>
 
 
