@@ -12,6 +12,10 @@ function Map({mapState}:{mapState: MapStateInterface}) {
 
     return (
         <MapContainer center={mapState.startingPosition} zoom={mapState.zoomLevel} scrollWheelZoom={true}>
+            {/*//this is a bit of a hack, basically rerenders everything upon*/}
+            {/*//mapState.setForceRerender(!mapState.forceRerender);*/}
+            {mapState.forceRerender ? "" : ""}
+
             <TileLayer
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

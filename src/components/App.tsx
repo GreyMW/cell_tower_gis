@@ -12,7 +12,6 @@ import MapLayer from "../logic/object_definitions/mapLayer.ts";
 
 function App() {
 
-
     const [currentMenu, setCurrentMenu] = useState<number>(MenuList.main);
     const [currentLayer, setCurrentLayer] = useState<string>("default");
     const [layers, setLayers] = useState<MapLayer[]>([new MapLayer("default")]);
@@ -22,6 +21,8 @@ function App() {
     const [locationOfInterest, setLocationOfInterest] = useState<LocationOfInterest | null>(null);
     const [locationsOfInterest, setLocationsOfInterest] = useState<LocationOfInterest[]>([]);
 
+    //this is a bit of a hack, basically rerenders the map upon:
+    //mapState.setForceRerender(!mapState.forceRerender);
     const [forceRerender, setForceRerender] = useState(false);
 
     const mapState: MapStateInterface = {
@@ -63,7 +64,6 @@ function App() {
             <div className={"main-left-pane"}>
                 <MenuSelector mapState={mapState}/>
             </div>
-            {forceRerender ? "" : ""}
             <Map mapState={mapState}/>
 
 
