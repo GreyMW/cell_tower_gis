@@ -3,9 +3,10 @@ import MapStateInterface from "../../../../logic/object_definitions/mapStateInte
 import menuList from "../../../../logic/object_definitions/menuList.ts";
 import Spacer from "../../menu_subitems/Spacer.tsx";
 import ActiveLayer from "../../menu_subitems/ActiveLayer.tsx";
-import {BlockPicker, ChromePicker, ColorResult, HuePicker, SliderPicker, TwitterPicker} from 'react-color';
-import React, {useEffect, useState} from "react";
+import {ColorResult, HuePicker} from 'react-color';
+import React, {useState} from "react";
 import getCurrentLayerReference from "../../../../logic/functionality/getCurrentLayerReference.ts";
+import {publish} from "../../../../logic/functionality/customEvents.ts";
 
 export default function LayerOptionsMenu({mapState}: {mapState: MapStateInterface}) {
     // const [colorPickerColor, setColorPickerColor] = useState("#FFF");
@@ -45,8 +46,9 @@ function setLayerColor(setColorPickerColor: React.Dispatch<React.SetStateAction<
     const currentLayer = getCurrentLayerReference(mapState);
     currentLayer.setColor(color.hex);
     currentLayer.setChildColor(color.hex);
-    mapState.setForceRerender(!mapState.forceRerender);
+    // mapState.setForceRerender(!mapState.forceRerender);
     // mapState.setLayers([...mapState.layers]);
+    publish('forceMapRerender');
 }
 
 

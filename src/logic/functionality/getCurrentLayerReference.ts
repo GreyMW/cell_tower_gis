@@ -4,7 +4,7 @@ import MapLayer from "../object_definitions/mapLayer.ts";
 function getCurrentLayerReference(mapState: MapStateInterface): MapLayer{
     for (const layer of mapState.layers) {
         if (layer.getLayerName() === mapState.currentLayer) {
-            console.log("Current Layer Found");
+            // console.log("Current Layer Found");
             return layer;
         }
     }

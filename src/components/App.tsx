@@ -25,6 +25,8 @@ function App() {
     //mapState.setForceRerender(!mapState.forceRerender);
     const [forceRerender, setForceRerender] = useState(false);
 
+
+
     const mapState: MapStateInterface = {
 
         currentMenu: currentMenu,
