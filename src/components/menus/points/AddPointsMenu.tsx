@@ -115,7 +115,7 @@ function handleSubmit(event: React.FormEvent<HTMLFormElement>, mapState: MapStat
         const parsedLat = parseFloat(formState.inputLatitude);
         const parsedLon = parseFloat(formState.inputLongitude);
         const newMapMarker = new MapMarker(parsedLat, parsedLon);
-        //TODO: make the marker inherit the color scheme of the layer
+        newMapMarker.copyParentLayerProperties(currentLayer);
         currentLayer?.addMarker(newMapMarker);
         mapState.setForceRerender(!mapState.forceRerender);
     }

@@ -4,6 +4,7 @@ import Spacer from "../menu_subitems/Spacer.tsx";
 import ActiveLayer from "../menu_subitems/ActiveLayer.tsx";
 import LatLonZoomViewer from "../menu_subitems/LatLonZoomViewer.tsx";
 import ButtonAddDeleteLayer from "./ButtonAddDeleteLayer.tsx";
+import ButtonLayerOptionsMenu from "./ButtonLayerOptionsMenu.tsx";
 
 export default function LayersMenu({mapState}: {mapState: MapStateInterface}) {
     return (
@@ -13,6 +14,8 @@ export default function LayersMenu({mapState}: {mapState: MapStateInterface}) {
             <ActiveLayer mapState={mapState}/>
             <Spacer/>
             <ButtonAddDeleteLayer mapState={mapState}/>
+            <Spacer/>
+            <ButtonLayerOptionsMenu mapState={mapState}/>
             <Spacer/>
 
 
