@@ -12,6 +12,7 @@ export default function LayerOptionsMenu({mapState}: {mapState: MapStateInterfac
     const currentLayer = getCurrentLayerReference(mapState);
     const [color, setColor] = useState(currentLayer.getColor());
     const [opacity, setOpacity] = useState(currentLayer.getOpacity() * 100);
+    const [visibility, setVisibility] = useState(currentLayer.getVisibility());
 
 
     return (
@@ -32,10 +33,17 @@ export default function LayerOptionsMenu({mapState}: {mapState: MapStateInterfac
             <div className={"vertical-margin-5px user-select-none"}>
                 Layer Opacity
             </div>
-            <input type={"range"} min={0} max={100} value={opacity} className={"slider"}
+            <input type={"range"} min={0} max={100} value={opacity} className={"slider bottom-margin-5px"}
                    style={{backgroundImage: `linear-gradient(to right, #1c1f27 , ${color})`}}
                    onChange={(e) => setLayerOpacity(setOpacity, e, mapState)}
             />
+            <Spacer/>
+            {visibility ?
+                <button className={"primary-button"} onClick={() => setLayerVisibility(visibility, setVisibility, mapState)}>Turn Visibility Off</button>:
+                <button className={"primary-button"} onClick={() => setLayerVisibility(visibility, setVisibility, mapState)}>Turn Visibility On</button>
+            }
+            <Spacer/>
+
         </div>
     )
 }
@@ -50,10 +58,16 @@ function setLayerColor(setColor: React.Dispatch<React.SetStateAction<string>>, c
 
 function setLayerOpacity(setOpacity: React.Dispatch<React.SetStateAction<number>>, e: React.ChangeEvent<HTMLInputElement>, mapState: MapStateInterface) {
     const opacity = e.target.valueAsNumber;
-    // console.log(opacity);
     setOpacity(opacity);
     const currentLayer = getCurrentLayerReference(mapState);
     currentLayer.setOpacity(opacity/100);
     currentLayer.setChildOpacity(opacity/100);
+    publish('forceMapRerender');
+}
+
+function setLayerVisibility(visibility: boolean, setVisibility: React.Dispatch<React.SetStateAction<boolean>>, mapState: MapStateInterface) {
+    setVisibility(!visibility);
+    const currentLayer = getCurrentLayerReference(mapState);
+    currentLayer.setVisibility(!visibility);
     publish('forceMapRerender');
 }
