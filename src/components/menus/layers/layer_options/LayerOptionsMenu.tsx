@@ -13,6 +13,7 @@ export default function LayerOptionsMenu({mapState}: {mapState: MapStateInterfac
     const [color, setColor] = useState(currentLayer.getColor());
     const [fillColor, setFillColor] = useState(currentLayer.getFillColor());
     const [opacity, setOpacity] = useState(currentLayer.getOpacity() * 100);
+    const [fillOpacity, setFillOpacity] = useState(currentLayer.getFillOpacity() * 100);
     const [visibility, setVisibility] = useState(currentLayer.getVisibility());
 
 
@@ -22,6 +23,7 @@ export default function LayerOptionsMenu({mapState}: {mapState: MapStateInterfac
             <Spacer/>
             <ActiveLayer mapState={mapState}/>
             <Spacer/>
+
             <div className={"vertical-margin-5px user-select-none"}>
                 Layer Color
             </div>
@@ -31,6 +33,7 @@ export default function LayerOptionsMenu({mapState}: {mapState: MapStateInterfac
                        height={"15px"}
                        onChange={(color) => setLayerColor(setColor, color, mapState)}
             />
+
             <div className={"vertical-margin-5px user-select-none"}>
                 Layer Opacity
             </div>
@@ -38,6 +41,7 @@ export default function LayerOptionsMenu({mapState}: {mapState: MapStateInterfac
                    style={{backgroundImage: `linear-gradient(to right, #1c1f27 , ${color})`}}
                    onChange={(e) => setLayerOpacity(setOpacity, e, mapState)}
             />
+
             <div className={"vertical-margin-5px user-select-none"}>
                 Layer Fill Color
             </div>
@@ -47,6 +51,15 @@ export default function LayerOptionsMenu({mapState}: {mapState: MapStateInterfac
                        height={"15px"}
                        onChange={(color) => setLayerFillColor(setFillColor, color, mapState)}
             />
+
+            <div className={"vertical-margin-5px user-select-none"}>
+                Layer Fill Opacity
+            </div>
+            <input type={"range"} min={0} max={100} value={fillOpacity} className={"slider bottom-margin-5px"}
+                   style={{backgroundImage: `linear-gradient(to right, #1c1f27 , ${fillColor})`}}
+                   onChange={(e) => setLayerFillOpacity(setFillOpacity, e, mapState)}
+            />
+
             <Spacer/>
             {visibility ?
                 <button className={"primary-button"} onClick={() => setLayerVisibility(visibility, setVisibility, mapState)}>Turn Visibility Off</button>:
@@ -80,6 +93,15 @@ function setLayerFillColor(setColor: React.Dispatch<React.SetStateAction<string>
     const currentLayer = getCurrentLayerReference(mapState);
     currentLayer.setFillColor(color.hex);
     currentLayer.setChildFillColor(color.hex);
+    publish('forceMapRerender');
+}
+
+function setLayerFillOpacity(setOpacity: React.Dispatch<React.SetStateAction<number>>, e: React.ChangeEvent<HTMLInputElement>, mapState: MapStateInterface) {
+    const opacity = e.target.valueAsNumber;
+    setOpacity(opacity);
+    const currentLayer = getCurrentLayerReference(mapState);
+    currentLayer.setFillOpacity(opacity/100);
+    currentLayer.setChildFillOpacity(opacity/100);
     publish('forceMapRerender');
 }
 
