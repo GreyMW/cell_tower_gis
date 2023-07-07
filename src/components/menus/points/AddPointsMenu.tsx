@@ -117,6 +117,5 @@ function handleSubmit(event: React.FormEvent<HTMLFormElement>, mapState: MapStat
         const newMapMarker = new MapMarker(parsedLat, parsedLon);
         newMapMarker.copyParentLayerProperties(currentLayer);
         currentLayer?.addMarker(newMapMarker);
-        mapState.setForceRerender(!mapState.forceRerender);
     }
 }

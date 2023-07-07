@@ -94,3 +94,31 @@
 .top-margin-10px {
     margin-top: 10px;
 }
+
+.top-margin-5px {
+    margin-top: 5px;
+}
+
+.bottom-margin-10px {
+    margin-bottom: 10px;
+}
+
+.bottom-margin-5px {
+    margin-bottom: 5px;
+}
+
+.vertical-margin-5px {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.slider {
+    -webkit-appearance: none;
+    width: var(--menu-item-width);
+    border-radius: 3px;
+
+}
+
+.user-select-none {
+    user-select: none;
+}

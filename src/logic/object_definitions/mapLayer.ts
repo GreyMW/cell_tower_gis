@@ -93,6 +93,12 @@ class MapLayer {
             marker.color = color;
         }
     }
+
+    public setChildOpacity(opacity: number) {
+        for (const marker of this.markers) {
+            marker.opacity = opacity;
+        }
+    }
     //******************* getters ******************************
     public getMarkers() {
         return this.markers;

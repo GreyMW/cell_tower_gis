@@ -9,12 +9,10 @@ import getCurrentLayerReference from "../../../../logic/functionality/getCurrent
 import {publish} from "../../../../logic/functionality/customEvents.ts";
 
 export default function LayerOptionsMenu({mapState}: {mapState: MapStateInterface}) {
-    // const [colorPickerColor, setColorPickerColor] = useState("#FFF");
-    const [colorPickerColor, setColorPickerColor] = useState(getCurrentLayerReference(mapState).getColor());
+    const currentLayer = getCurrentLayerReference(mapState);
+    const [colorPickerColor, setColorPickerColor] = useState(currentLayer.getColor());
+    const [opacity, setOpacity] = useState(currentLayer.getOpacity() * 100);
 
-    // useEffect(() => {
-    //     setColorPickerColor(getCurrentLayerReference(mapState).getColor())
-    // },[]);
 
     return (
         <div className={'main-menu-container'}>
@@ -22,37 +20,39 @@ export default function LayerOptionsMenu({mapState}: {mapState: MapStateInterfac
             <Spacer/>
             <ActiveLayer mapState={mapState}/>
             <Spacer/>
-            {/*<HuePicker color={colorPickerColor} onChange={(color) => setLayerColor2(color, setColorPickerColor)}/>*/}
-            {/*<HuePicker color={getCurrentLayerReference(mapState).getColor()} */}
+            <div className={"vertical-margin-5px user-select-none"}>
+                Layer Color
+            </div>
             <HuePicker color={colorPickerColor}
-                       // onChange={(color) => setColorPickerColor(color.hex)}
+                       className={"hue-picker"}
+                       width="90%"
                        onChange={(color) => setLayerColor(setColorPickerColor, color, mapState)}
+            />
+            <div className={"vertical-margin-5px user-select-none"}>
+                Layer Opacity
+            </div>
+            <input type={"range"} min={0} max={100} value={opacity} className={"slider"}
+                   style={{backgroundImage: `linear-gradient(to right, #1c1f27 , ${colorPickerColor})`}}
+                   onChange={(e) => setLayerOpacity(setOpacity, e, mapState)}
             />
         </div>
     )
 }
-
-// const setLayerColor = (color: ColorResult,
-//                        setColorPickerColor: React.Dispatch<React.SetStateAction<string>>,
-//                        mapState: MapStateInterface) => {
-//     setColorPickerColor(color.hex);
-//     const currentLayer = getCurrentLayerReference(mapState);
-//     currentLayer.setColor(color.hex);
-//     currentLayer.setChildColor(color.hex);
-// }
 
 function setLayerColor(setColorPickerColor: React.Dispatch<React.SetStateAction<string>>, color: ColorResult, mapState: MapStateInterface) {
     setColorPickerColor(color.hex);
     const currentLayer = getCurrentLayerReference(mapState);
     currentLayer.setColor(color.hex);
     currentLayer.setChildColor(color.hex);
-    // mapState.setForceRerender(!mapState.forceRerender);
-    // mapState.setLayers([...mapState.layers]);
     publish('forceMapRerender');
 }
 
-
-// const setLayerColor2 = (color: ColorResult, setColorPickerColor: React.Dispatch<React.SetStateAction<string>> ) => {
-//     setColorPickerColor(color.hex);
-//     console.log("tertiary Action");
-// }
+function setLayerOpacity(setOpacity: React.Dispatch<React.SetStateAction<number>>, e: React.ChangeEvent<HTMLInputElement>, mapState: MapStateInterface) {
+    const opacity = e.target.valueAsNumber;
+    // console.log(opacity);
+    setOpacity(opacity);
+    const currentLayer = getCurrentLayerReference(mapState);
+    currentLayer.setOpacity(opacity/100);
+    currentLayer.setChildOpacity(opacity/100);
+    publish('forceMapRerender');
+}
