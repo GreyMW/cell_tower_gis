@@ -11,6 +11,7 @@ import {publish} from "../../../../logic/functionality/customEvents.ts";
 export default function LayerOptionsMenu({mapState}: {mapState: MapStateInterface}) {
     const currentLayer = getCurrentLayerReference(mapState);
     const [color, setColor] = useState(currentLayer.getColor());
+    const [fillColor, setFillColor] = useState(currentLayer.getFillColor());
     const [opacity, setOpacity] = useState(currentLayer.getOpacity() * 100);
     const [visibility, setVisibility] = useState(currentLayer.getVisibility());
 
@@ -37,6 +38,15 @@ export default function LayerOptionsMenu({mapState}: {mapState: MapStateInterfac
                    style={{backgroundImage: `linear-gradient(to right, #1c1f27 , ${color})`}}
                    onChange={(e) => setLayerOpacity(setOpacity, e, mapState)}
             />
+            <div className={"vertical-margin-5px user-select-none"}>
+                Layer Fill Color
+            </div>
+            <HuePicker color={fillColor}
+                       className={"hue-picker"}
+                       width="90%"
+                       height={"15px"}
+                       onChange={(color) => setLayerFillColor(setFillColor, color, mapState)}
+            />
             <Spacer/>
             {visibility ?
                 <button className={"primary-button"} onClick={() => setLayerVisibility(visibility, setVisibility, mapState)}>Turn Visibility Off</button>:
@@ -62,6 +72,14 @@ function setLayerOpacity(setOpacity: React.Dispatch<React.SetStateAction<number>
     const currentLayer = getCurrentLayerReference(mapState);
     currentLayer.setOpacity(opacity/100);
     currentLayer.setChildOpacity(opacity/100);
+    publish('forceMapRerender');
+}
+
+function setLayerFillColor(setColor: React.Dispatch<React.SetStateAction<string>>, color: ColorResult, mapState: MapStateInterface) {
+    setColor(color.hex);
+    const currentLayer = getCurrentLayerReference(mapState);
+    currentLayer.setFillColor(color.hex);
+    currentLayer.setChildFillColor(color.hex);
     publish('forceMapRerender');
 }
 

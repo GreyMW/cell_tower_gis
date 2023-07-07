@@ -94,6 +94,12 @@ class MapLayer {
         }
     }
 
+    public setChildFillColor(color: string) {
+        for (const marker of this.markers) {
+            marker.fillColor = color;
+        }
+    }
+
     public setChildOpacity(opacity: number) {
         for (const marker of this.markers) {
             marker.opacity = opacity;
