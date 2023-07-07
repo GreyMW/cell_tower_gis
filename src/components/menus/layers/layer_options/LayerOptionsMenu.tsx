@@ -10,7 +10,7 @@ import {publish} from "../../../../logic/functionality/customEvents.ts";
 
 export default function LayerOptionsMenu({mapState}: {mapState: MapStateInterface}) {
     const currentLayer = getCurrentLayerReference(mapState);
-    const [colorPickerColor, setColorPickerColor] = useState(currentLayer.getColor());
+    const [color, setColor] = useState(currentLayer.getColor());
     const [opacity, setOpacity] = useState(currentLayer.getOpacity() * 100);
 
 
@@ -23,24 +23,25 @@ export default function LayerOptionsMenu({mapState}: {mapState: MapStateInterfac
             <div className={"vertical-margin-5px user-select-none"}>
                 Layer Color
             </div>
-            <HuePicker color={colorPickerColor}
+            <HuePicker color={color}
                        className={"hue-picker"}
                        width="90%"
-                       onChange={(color) => setLayerColor(setColorPickerColor, color, mapState)}
+                       height={"15px"}
+                       onChange={(color) => setLayerColor(setColor, color, mapState)}
             />
             <div className={"vertical-margin-5px user-select-none"}>
                 Layer Opacity
             </div>
             <input type={"range"} min={0} max={100} value={opacity} className={"slider"}
-                   style={{backgroundImage: `linear-gradient(to right, #1c1f27 , ${colorPickerColor})`}}
+                   style={{backgroundImage: `linear-gradient(to right, #1c1f27 , ${color})`}}
                    onChange={(e) => setLayerOpacity(setOpacity, e, mapState)}
             />
         </div>
     )
 }
 
-function setLayerColor(setColorPickerColor: React.Dispatch<React.SetStateAction<string>>, color: ColorResult, mapState: MapStateInterface) {
-    setColorPickerColor(color.hex);
+function setLayerColor(setColor: React.Dispatch<React.SetStateAction<string>>, color: ColorResult, mapState: MapStateInterface) {
+    setColor(color.hex);
     const currentLayer = getCurrentLayerReference(mapState);
     currentLayer.setColor(color.hex);
     currentLayer.setChildColor(color.hex);

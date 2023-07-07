@@ -116,7 +116,17 @@
     -webkit-appearance: none;
     width: var(--menu-item-width);
     border-radius: 3px;
+    height: 15px;
+}
 
+.slider::-webkit-slider-thumb {
+    webkit-appearance: none;
+    appearance: none;
+    border-radius: 50%;
+    color: white;
+    width: 18px;
+    height: 18px;
+    background: white;
 }
 
 .user-select-none {
