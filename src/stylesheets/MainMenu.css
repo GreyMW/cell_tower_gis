@@ -129,6 +129,24 @@
     background: white;
 }
 
+.slider-thin::-webkit-slider-thumb {
+    webkit-appearance: none;
+    appearance: none;
+    border-radius: 50%;
+    color: white;
+    width: 18px;
+    height: 18px;
+    background: white;
+}
+
+.slider-thin {
+    -webkit-appearance: none;
+    width: var(--menu-item-width);
+    border-radius: 3px;
+    height: 2px;
+    background: #303439;
+}
+
 .user-select-none {
     user-select: none;
 }

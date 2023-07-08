@@ -112,6 +112,12 @@ class MapLayer {
         }
     }
 
+    public setChildWeight(weight: number) {
+        for (const marker of this.markers) {
+            marker.weight = weight;
+        }
+    }
+
     //******************* getters ******************************
     public getMarkers() {
         return this.markers;

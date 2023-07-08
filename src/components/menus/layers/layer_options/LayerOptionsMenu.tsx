@@ -15,6 +15,7 @@ export default function LayerOptionsMenu({mapState}: {mapState: MapStateInterfac
     const [opacity, setOpacity] = useState(currentLayer.getOpacity() * 100);
     const [fillOpacity, setFillOpacity] = useState(currentLayer.getFillOpacity() * 100);
     const [visibility, setVisibility] = useState(currentLayer.getVisibility());
+    const [weight, setWeight] = useState(currentLayer.getWeight());
 
 
     return (
@@ -58,6 +59,16 @@ export default function LayerOptionsMenu({mapState}: {mapState: MapStateInterfac
             <input type={"range"} min={0} max={100} value={fillOpacity} className={"slider bottom-margin-5px"}
                    style={{backgroundImage: `linear-gradient(to right, #1c1f27 , ${fillColor})`}}
                    onChange={(e) => setLayerFillOpacity(setFillOpacity, e, mapState)}
+            />
+
+
+
+            <div className={"vertical-margin-5px user-select-none"}>
+                {`Line Weight: ${weight}`}
+            </div>
+            <input type={"range"} min={0} max={100} value={weight} className={"slider-thin bottom-margin-10px top-margin-5px"}
+                   // style={{backgroundColor: `${color}`}}
+                   onChange={(e) => setLayerWeight(setWeight, e, mapState)}
             />
 
             <Spacer/>
@@ -105,6 +116,14 @@ function setLayerFillOpacity(setOpacity: React.Dispatch<React.SetStateAction<num
     publish('forceMapRerender');
 }
 
+function setLayerWeight(setWeight: React.Dispatch<React.SetStateAction<number>>, e: React.ChangeEvent<HTMLInputElement>, mapState: MapStateInterface) {
+    const weight = e.target.valueAsNumber;
+    setWeight(weight);
+    const currentLayer = getCurrentLayerReference(mapState);
+    currentLayer.setWeight(weight/5);
+    currentLayer.setChildWeight(weight/5);
+    publish('forceMapRerender');
+}
 function setLayerVisibility(visibility: boolean, setVisibility: React.Dispatch<React.SetStateAction<boolean>>, mapState: MapStateInterface) {
     setVisibility(!visibility);
     const currentLayer = getCurrentLayerReference(mapState);
