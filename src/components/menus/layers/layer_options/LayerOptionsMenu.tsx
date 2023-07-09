@@ -25,47 +25,37 @@ export default function LayerOptionsMenu({mapState}: {mapState: MapStateInterfac
             <ActiveLayer mapState={mapState}/>
             <Spacer/>
 
-            <div className={"vertical-margin-5px user-select-none"}>
-                Layer Color
-            </div>
+            <p className={"vertical-margin-5px user-select-none"}>Outline Color</p>
             <HuePicker color={color}
                        className={"hue-picker"}
                        width="90%"
                        height={"15px"}
                        onChange={(color) => setLayerColor(setColor, color, mapState)}
             />
+            <p className={"vertical-margin-5px user-select-none"}>Outline Opacity</p>
 
-            <div className={"vertical-margin-5px user-select-none"}>
-                Layer Opacity
-            </div>
-            <input type={"range"} min={0} max={100} value={opacity} className={"slider bottom-margin-5px"}
+            <input type={"range"} min={0} max={100} value={opacity} className={"slider"}
                    style={{backgroundImage: `linear-gradient(to right, #1c1f27 , ${color})`}}
                    onChange={(e) => setLayerOpacity(setOpacity, e, mapState)}
             />
 
-            <div className={"vertical-margin-5px user-select-none"}>
-                Layer Fill Color
-            </div>
+            <p className={"vertical-margin-5px user-select-none"}>Fill Color</p>
+
             <HuePicker color={fillColor}
                        className={"hue-picker"}
                        width="90%"
                        height={"15px"}
                        onChange={(color) => setLayerFillColor(setFillColor, color, mapState)}
             />
+            <p className={"vertical-margin-5px user-select-none"}>Fill Opacity</p>
 
-            <div className={"vertical-margin-5px user-select-none"}>
-                Layer Fill Opacity
-            </div>
-            <input type={"range"} min={0} max={100} value={fillOpacity} className={"slider bottom-margin-5px"}
+            <input type={"range"} min={0} max={100} value={fillOpacity} className={"slider"}
                    style={{backgroundImage: `linear-gradient(to right, #1c1f27 , ${fillColor})`}}
                    onChange={(e) => setLayerFillOpacity(setFillOpacity, e, mapState)}
             />
 
+            <p className={"vertical-margin-5px user-select-none"}>{`Line Weight: ${weight}`}</p>
 
-
-            <div className={"vertical-margin-5px user-select-none"}>
-                {`Line Weight: ${weight}`}
-            </div>
             <input type={"range"} min={0} max={100} value={weight} className={"slider-thin bottom-margin-10px top-margin-5px"}
                    // style={{backgroundColor: `${color}`}}
                    onChange={(e) => setLayerWeight(setWeight, e, mapState)}
