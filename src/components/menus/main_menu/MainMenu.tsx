@@ -19,7 +19,7 @@ export default function MainMenu({mapState}: {mapState: MapStateInterface }) {
             <Spacer/>
             <ButtonAddPoint mapState={mapState}/>
             <Spacer/>
-            <ButtonTowers/>
+            <ButtonTowers mapState={mapState}/>
             <Spacer/>
             <ButtonAddAnnotations mapState={mapState}/>
             <Spacer/>

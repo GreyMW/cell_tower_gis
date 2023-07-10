@@ -6,6 +6,7 @@ enum MenuList {
     add_delete_layer,
     layer_menu,
     annotation_menu,
-    layer_options
+    layer_options,
+    add_cell_tower_menu
 }
 export default MenuList;
