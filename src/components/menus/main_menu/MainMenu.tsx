@@ -1,32 +1,26 @@
 import MapStateInterface from "../../../logic/object_definitions/mapStateInterface.ts";
 import "../../../stylesheets/MainMenu.css";
 import Spacer from "../menu_subitems/Spacer.tsx";
-import ButtonLocationsOfInterest from "./ButtonLocationsOfInterest.tsx";
 import LatLonZoomViewer from "../menu_subitems/LatLonZoomViewer.tsx";
-import ButtonLayers from "./ButtonLayers.tsx";
-import ButtonAddPoint from "./ButtonPoints.tsx";
-import ButtonTowers from "./ButtonTowers.tsx";
-import ButtonAddAnnotations from "./ButtonAddAnnotations.tsx";
+import ButtonSwitchMenu from "../menu_subitems/ButtonSwitchMenu.tsx";
+import menuList from "../../../logic/object_definitions/menuList.ts";
 
-export default function MainMenu({mapState}: {mapState: MapStateInterface }) {
+export default function MainMenu({mapState}: { mapState: MapStateInterface }) {
     return (
         <div className={"main-menu-container"}>
             <h1>Crime Analysis GIS</h1>
             <Spacer/>
-            <ButtonLocationsOfInterest mapState={mapState}/>
+            <ButtonSwitchMenu mapState={mapState} menu={menuList.location_of_interest} text={"Locations of Interest"}/>
             <Spacer/>
-            <ButtonLayers mapState={mapState}/>
+            <ButtonSwitchMenu mapState={mapState} menu={menuList.layer_menu} text={"Layers"}/>
             <Spacer/>
-            <ButtonAddPoint mapState={mapState}/>
+            <ButtonSwitchMenu mapState={mapState} menu={menuList.add_points} text={"Add Points"}/>
             <Spacer/>
-            <ButtonTowers mapState={mapState}/>
+            <ButtonSwitchMenu mapState={mapState} menu={menuList.add_cell_tower_menu} text={"Add Cell Towers"}/>
             <Spacer/>
-            <ButtonAddAnnotations mapState={mapState}/>
+            <ButtonSwitchMenu mapState={mapState} menu={menuList.annotation_menu} text={"Add Annotations"}/>
             <Spacer/>
-
-
             <LatLonZoomViewer mapState={mapState}/>
-
         </div>
     )
 }

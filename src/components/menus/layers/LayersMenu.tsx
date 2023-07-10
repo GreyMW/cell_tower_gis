@@ -3,8 +3,8 @@ import ReturnToMain from "../menu_subitems/ReturnToMain.tsx";
 import Spacer from "../menu_subitems/Spacer.tsx";
 import ActiveLayer from "../menu_subitems/ActiveLayer.tsx";
 import LatLonZoomViewer from "../menu_subitems/LatLonZoomViewer.tsx";
-import ButtonAddDeleteLayer from "./ButtonAddDeleteLayer.tsx";
-import ButtonLayerOptionsMenu from "./ButtonLayerOptionsMenu.tsx";
+import ButtonSwitchMenu from "../menu_subitems/ButtonSwitchMenu.tsx";
+import menuList from "../../../logic/object_definitions/menuList.ts";
 
 export default function LayersMenu({mapState}: {mapState: MapStateInterface}) {
     return (
@@ -13,12 +13,10 @@ export default function LayersMenu({mapState}: {mapState: MapStateInterface}) {
             <Spacer/>
             <ActiveLayer mapState={mapState}/>
             <Spacer/>
-            <ButtonAddDeleteLayer mapState={mapState}/>
+            <ButtonSwitchMenu mapState={mapState} menu={menuList.add_delete_layer} text={"Add/Delete Layers"}/>
             <Spacer/>
-            <ButtonLayerOptionsMenu mapState={mapState}/>
+            <ButtonSwitchMenu mapState={mapState} menu={menuList.layer_options} text={"Layer Options"}/>
             <Spacer/>
-
-
             <LatLonZoomViewer mapState={mapState}/>
 
         </div>

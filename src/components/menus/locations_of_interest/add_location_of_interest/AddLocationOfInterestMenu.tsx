@@ -1,13 +1,13 @@
-import MapStateInterface from "../../../logic/object_definitions/mapStateInterface.ts";
-import ReturnToPrevious from "../menu_subitems/ReturnToPrevious.tsx";
-import MenuList from "../../../logic/object_definitions/menuList.ts";
+import MapStateInterface from "../../../../logic/object_definitions/mapStateInterface.ts";
+import ReturnToPrevious from "../../menu_subitems/ReturnToPrevious.tsx";
+import MenuList from "../../../../logic/object_definitions/menuList.ts";
 import React, {useState} from "react";
-import LocationOfInterest from "../../../logic/object_definitions/locationOfInterest.ts";
-import Spacer from "../menu_subitems/Spacer.tsx";
-import LatLonZoomViewer from "../menu_subitems/LatLonZoomViewer.tsx";
-import ValidationResponse from "../../../logic/object_definitions/validationResponse.ts";
-import latitudeValidation from "../../../logic/functionality/latitudeValidation.ts";
-import longitudeValidation from "../../../logic/functionality/longitudeValidation.ts";
+import LocationOfInterest from "../../../../logic/object_definitions/locationOfInterest.ts";
+import Spacer from "../../menu_subitems/Spacer.tsx";
+import LatLonZoomViewer from "../../menu_subitems/LatLonZoomViewer.tsx";
+import ValidationResponse from "../../../../logic/object_definitions/validationResponse.ts";
+import latitudeValidation from "../../../../logic/functionality/latitudeValidation.ts";
+import longitudeValidation from "../../../../logic/functionality/longitudeValidation.ts";
 // import "../../../stylesheets/MainMenu.css";
 
 export default function AddLocationOfInterestMenu({mapState}:{mapState: MapStateInterface}) {

@@ -4,7 +4,7 @@ import MainMenu from "./menus/main_menu/MainMenu.tsx";
 import LocationsOfInterestMenu from "./menus/locations_of_interest/LocationsOfInterestMenu.tsx";
 import AddPointsMenu from "./menus/points/AddPointsMenu.tsx";
 import MenuList from "../logic/object_definitions/menuList.ts";
-import AddLocationOfInterestMenu from "./menus/locations_of_interest/AddLocationOfInterestMenu.tsx";
+import AddLocationOfInterestMenu from "./menus/locations_of_interest/add_location_of_interest/AddLocationOfInterestMenu.tsx";
 import LayersMenu from "./menus/layers/LayersMenu.tsx";
 import AddDeleteLayerMenu from "./menus/layers/add_delete_layers/AddDeleteLayerMenu.tsx";
 import AnnotationsMenu from "./menus/annotations/AnnotationsMenu.tsx";

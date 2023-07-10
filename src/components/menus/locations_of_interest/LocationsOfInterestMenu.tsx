@@ -19,13 +19,7 @@ export default function LocationsOfInterestMenu({mapState}: { mapState: MapState
         )
     }
 
-    function AddLocationOfInterest({mapState}: { mapState: MapStateInterface }) {
-        return (
-            <button className={'primary-button'}
-                    onClick={() => mapState.setCurrentMenu(MenuList.add_location_of_interest)}>Add Location of
-                Interest</button>
-        )
-    }
+
 
     return (
         <div className={"main-menu-container"}>
@@ -38,5 +32,13 @@ export default function LocationsOfInterestMenu({mapState}: { mapState: MapState
             <Spacer/>
             <LatLonZoomViewer mapState={mapState}/>
         </div>
+    )
+}
+
+function AddLocationOfInterest({mapState}: { mapState: MapStateInterface }) {
+    return (
+        <button className={'primary-button'}
+                onClick={() => mapState.setCurrentMenu(MenuList.add_location_of_interest)}>Add Location of
+            Interest</button>
     )
 }
