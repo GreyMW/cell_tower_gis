@@ -14,7 +14,8 @@ export default function LocationsOfInterestMenu({mapState}: { mapState: MapState
             <Spacer/>
             {mapState.locationsOfInterest.map((loc, index) => CreateLocationButton(loc, index, mapState))}
             <Spacer/>
-            <ButtonSwitchMenu mapState={mapState} menu={MenuList.add_location_of_interest} text={"Add Location of Interest"}/>
+            <ButtonSwitchMenu mapState={mapState} menu={MenuList.add_location_of_interest}
+                              text={"Add Location of Interest"}/>
             <Spacer/>
             <LatLonZoomViewer mapState={mapState}/>
         </div>
@@ -24,11 +25,8 @@ export default function LocationsOfInterestMenu({mapState}: { mapState: MapState
 function CreateLocationButton(location: LocationOfInterest, key: number, mapState: MapStateInterface) {
 
     return (
-        <button key={key} className={'secondary-button'} onClick={
-            () => {
-                mapState.setLocationOfInterest(location);
-            }}
-        >
+        <button key={key} className={'secondary-button'}
+                onClick={() => {mapState.setLocationOfInterest(location);}}>
             {location.name}
         </button>
     )

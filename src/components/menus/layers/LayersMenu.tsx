@@ -16,8 +16,10 @@ export default function LayersMenu({mapState}: {mapState: MapStateInterface}) {
             <ButtonSwitchMenu mapState={mapState} menu={menuList.add_delete_layer} text={"Add/Delete Layers"}/>
             <Spacer/>
             <ButtonSwitchMenu mapState={mapState} menu={menuList.layer_options} text={"Layer Options"}/>
+
             <Spacer/>
             <LatLonZoomViewer mapState={mapState}/>
+
 
         </div>
     )

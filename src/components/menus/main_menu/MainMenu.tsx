@@ -20,6 +20,10 @@ export default function MainMenu({mapState}: { mapState: MapStateInterface }) {
             <Spacer/>
             <ButtonSwitchMenu mapState={mapState} menu={menuList.annotation_menu} text={"Add Annotations"}/>
             <Spacer/>
+            {/*TODO*/}
+            <ButtonSwitchMenu mapState={mapState} menu={menuList.layer_options} text={"Add Polygon"}/>
+            <Spacer/>
+
             <LatLonZoomViewer mapState={mapState}/>
         </div>
     )
