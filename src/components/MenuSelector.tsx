@@ -10,6 +10,7 @@ import AddDeleteLayerMenu from "./menus/layers/add_delete_layers/AddDeleteLayerM
 import AnnotationsMenu from "./menus/annotations/AnnotationsMenu.tsx";
 import LayerOptionsMenu from "./menus/layers/layer_options/LayerOptionsMenu.tsx";
 import AddCellTowerMenu from "./menus/cell_towers/AddCellTowerMenu.tsx";
+import PolygonMenu from "./menus/polygons/PolygonMenu.tsx";
 function MenuSelector({mapState}: {mapState: MapStateInterface}){
 
     function Select(){
@@ -24,6 +25,8 @@ function MenuSelector({mapState}: {mapState: MapStateInterface}){
                 {mapState.currentMenu === MenuList.annotation_menu ? <AnnotationsMenu mapState={mapState}/> : null}
                 {mapState.currentMenu === MenuList.layer_options ? <LayerOptionsMenu mapState={mapState}/> : null}
                 {mapState.currentMenu === MenuList.add_cell_tower_menu ? <AddCellTowerMenu mapState={mapState}/> : null}
+                {mapState.currentMenu === MenuList.polygon_menu ? <PolygonMenu mapState={mapState}/> : null}
+
             </div>
         )
     }

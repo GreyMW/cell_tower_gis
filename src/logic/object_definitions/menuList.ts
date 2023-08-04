@@ -7,6 +7,7 @@ enum MenuList {
     layer_menu,
     annotation_menu,
     layer_options,
-    add_cell_tower_menu
+    add_cell_tower_menu,
+    polygon_menu
 }
 export default MenuList;
